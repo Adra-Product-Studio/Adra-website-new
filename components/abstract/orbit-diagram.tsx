@@ -59,6 +59,11 @@ export function OrbitDiagram({
             <stop offset="0%" stopColor="currentColor" stopOpacity="0.55" />
             <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
           </radialGradient>
+          <path
+            id="outerOrbit"
+            d="M160 40 a120 120 0 1 1 -0.1 0"
+          />
+          <path id="innerOrbit" d="M160 68 a92 92 0 1 1 -0.1 0" />
         </defs>
 
         {/* Soft vignette */}
@@ -73,6 +78,17 @@ export function OrbitDiagram({
           stroke="currentColor"
           strokeOpacity="0.2"
           strokeWidth="1"
+        />
+        <circle
+          cx="160"
+          cy="160"
+          r="92"
+          fill="none"
+          stroke="currentColor"
+          strokeOpacity="0.18"
+          strokeWidth="1"
+          strokeDasharray="10 12"
+          className="animate-dash"
         />
         <g className="animate-orbit-slow origin-center">
           <circle
@@ -91,6 +107,80 @@ export function OrbitDiagram({
           <circle cx="160" cy="238" r="3" fill="currentColor" opacity="0.4" />
         </g>
 
+        {/* Collaboration handoffs */}
+        <g opacity="0.85">
+          <g>
+            <circle r="4.5" fill="currentColor" opacity="0.7">
+              <animate
+                attributeName="r"
+                values="3;6;4"
+                dur="10s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <animateMotion
+              dur="10s"
+              repeatCount="indefinite"
+              rotate="auto"
+              path="M160 40 a120 120 0 1 1 -0.1 0"
+            />
+          </g>
+          <g>
+            <rect
+              x="-4"
+              y="-4"
+              width="8"
+              height="8"
+              rx="1.5"
+              fill="currentColor"
+              opacity="0.6"
+            >
+              <animate
+                attributeName="rx"
+                values="1;4;1"
+                dur="12s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="width"
+                values="6;10;7"
+                dur="12s"
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="height"
+                values="6;10;7"
+                dur="12s"
+                repeatCount="indefinite"
+              />
+            </rect>
+            <animateMotion
+              begin="-4s"
+              dur="12s"
+              repeatCount="indefinite"
+              rotate="auto"
+              path="M160 68 a92 92 0 1 1 -0.1 0"
+            />
+          </g>
+          <g>
+            <circle r="3.5" fill="currentColor" opacity="0.5">
+              <animate
+                attributeName="r"
+                values="2;5;3"
+                dur="8s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <animateMotion
+              begin="-6s"
+              dur="8s"
+              repeatCount="indefinite"
+              rotate="auto"
+              path="M160 40 a120 120 0 1 1 -0.1 0"
+            />
+          </g>
+        </g>
+
         {/* Connectors */}
         {positions.map((p, idx) => (
           <line
@@ -100,8 +190,10 @@ export function OrbitDiagram({
             x2={p.x}
             y2={p.y}
             stroke="currentColor"
-            strokeOpacity="0.12"
+            strokeOpacity="0.18"
             strokeWidth="1"
+            strokeDasharray={idx % 2 === 0 ? "6 8" : "0"}
+            className={idx % 2 === 0 ? "animate-dash" : undefined}
           />
         ))}
 
