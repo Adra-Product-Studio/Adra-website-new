@@ -12,14 +12,14 @@ export function OrbitDiagram({
   className,
   centerLabel = "Adra",
   nodes = [
-    "Product",
-    "UX",
-    "Full-stack",
-    "Data Eng",
-    "Data Science",
-    "Analytics",
-    "Product Ops",
-    "Customer Success"
+    "Strategy",
+    "Discovery",
+    "Design",
+    "Build",
+    "QA",
+    "Launch",
+    "Growth",
+    "Support"
   ]
 }: OrbitDiagramProps) {
   // Layout: 8 nodes around a circle.
@@ -37,8 +37,9 @@ export function OrbitDiagram({
       aria-hidden
       className={cn(
         "relative aspect-square w-full max-w-[420px]",
-        "rounded-2xl border bg-background/60",
-        "backdrop-blur supports-[backdrop-filter]:bg-background/40",
+        "rounded-2xl border border-white/10 bg-background/70",
+        "backdrop-blur supports-[backdrop-filter]:bg-background/50",
+        "shadow-[0_0_40px_rgba(8,10,18,0.35)_inset]",
         className
       )}
     >
@@ -50,7 +51,12 @@ export function OrbitDiagram({
       >
         <defs>
           <radialGradient id="fade" cx="50%" cy="50%" r="70%">
-            <stop offset="0%" stopColor="currentColor" stopOpacity="0.14" />
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.12" />
+            <stop offset="70%" stopColor="currentColor" stopOpacity="0.06" />
+            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
+          </radialGradient>
+          <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="currentColor" stopOpacity="0.55" />
             <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
           </radialGradient>
         </defs>
@@ -65,20 +71,25 @@ export function OrbitDiagram({
           r="120"
           fill="none"
           stroke="currentColor"
-          strokeOpacity="0.18"
+          strokeOpacity="0.2"
           strokeWidth="1"
         />
-        <circle
-          cx="160"
-          cy="160"
-          r="78"
-          fill="none"
-          stroke="currentColor"
-          strokeOpacity="0.12"
-          strokeWidth="1"
-          strokeDasharray="6 10"
-          className="animate-dash"
-        />
+        <g className="animate-orbit-slow origin-center">
+          <circle
+            cx="160"
+            cy="160"
+            r="78"
+            fill="none"
+            stroke="currentColor"
+            strokeOpacity="0.18"
+            strokeWidth="1"
+            strokeDasharray="6 10"
+          />
+          <circle cx="160" cy="82" r="4" fill="currentColor" opacity="0.55" />
+        </g>
+        <g className="animate-orbit-reverse origin-center">
+          <circle cx="160" cy="238" r="3" fill="currentColor" opacity="0.4" />
+        </g>
 
         {/* Connectors */}
         {positions.map((p, idx) => (
@@ -99,37 +110,50 @@ export function OrbitDiagram({
           <circle
             cx="160"
             cy="160"
-            r="34"
+            r="36"
             fill="none"
             stroke="currentColor"
-            strokeOpacity="0.4"
+            strokeOpacity="0.5"
             strokeWidth="1"
           />
           <circle
             cx="160"
             cy="160"
-            r="24"
+            r="26"
             fill="currentColor"
-            opacity="0.05"
+            opacity="0.08"
+          />
+          <circle
+            cx="160"
+            cy="160"
+            r="42"
+            fill="url(#nodeGlow)"
+            opacity="0.35"
+            className="animate-pulse-soft"
           />
         </g>
 
         {/* Nodes */}
         {positions.map((p, idx) => (
-          <g key={idx}>
+          <g
+            key={idx}
+            className="animate-handoff"
+            style={{ animationDelay: `${idx * 0.6}s` }}
+          >
             <circle
               cx={p.x}
               cy={p.y}
-              r="10"
-              fill="currentColor"
-              opacity="0.05"
+              r="12"
+              fill="url(#nodeGlow)"
+              opacity="0.35"
+              className="animate-pulse-soft"
             />
             <circle
               cx={p.x}
               cy={p.y}
-              r="4"
+              r="4.5"
               fill="currentColor"
-              opacity="0.55"
+              opacity="0.7"
             />
           </g>
         ))}
@@ -139,10 +163,10 @@ export function OrbitDiagram({
           x="160"
           y="166"
           textAnchor="middle"
-          fontSize="12"
+          fontSize="13"
           fill="currentColor"
-          opacity="0.85"
-          style={{ fontWeight: 600, letterSpacing: 0.6 }}
+          opacity="0.9"
+          style={{ fontWeight: 600, letterSpacing: 0.8 }}
         >
           {centerLabel}
         </text>
@@ -153,8 +177,12 @@ export function OrbitDiagram({
         {positions.map((p, idx) => (
           <div
             key={idx}
-            className="absolute -translate-x-1/2 -translate-y-1/2 text-[11px] text-muted-foreground"
-            style={{ left: `${(p.x / 320) * 100}%`, top: `${(p.y / 320) * 100}%` }}
+            className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/10 bg-background/70 px-2.5 py-1 text-[11px] font-medium text-foreground/80 shadow-[0_0_18px_rgba(8,10,18,0.25)] backdrop-blur-sm animate-handoff"
+            style={{
+              left: `${(p.x / 320) * 100}%`,
+              top: `${(p.y / 320) * 100}%`,
+              animationDelay: `${idx * 0.6}s`
+            }}
           >
             {nodes[idx]}
           </div>
@@ -162,8 +190,8 @@ export function OrbitDiagram({
       </div>
 
       {/* Subtle floating marker */}
-      <div className="absolute left-6 top-6 h-2 w-2 rounded-full bg-foreground/30 animate-pulse-soft" />
-      <div className="absolute bottom-8 right-10 h-1.5 w-1.5 rounded-full bg-foreground/20 animate-pulse-soft" />
+      <div className="absolute left-6 top-6 h-2.5 w-2.5 rounded-full bg-foreground/40 animate-pulse-soft" />
+      <div className="absolute bottom-8 right-10 h-1.5 w-1.5 rounded-full bg-foreground/30 animate-pulse-soft" />
     </div>
   );
 }

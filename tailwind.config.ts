@@ -73,8 +73,19 @@ const config: Config = {
           "0%, 100%": { opacity: "0.35" },
           "50%": { opacity: "0.7" }
         },
+        "orbit-slow": {
+          to: { transform: "rotate(360deg)" }
+        },
+        "orbit-reverse": {
+          to: { transform: "rotate(-360deg)" }
+        },
         "dash": {
           to: { strokeDashoffset: "-1000" }
+        },
+        handoff: {
+          "0%, 100%": { opacity: "0.45", transform: "scale(1)" },
+          "35%": { opacity: "0.95", transform: "scale(1.05)" },
+          "70%": { opacity: "0.6", transform: "scale(1)" }
         }
       },
       animation: {
@@ -82,6 +93,9 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
         "pulse-soft": "pulse-soft 6s ease-in-out infinite",
+        "orbit-slow": "orbit-slow 48s linear infinite",
+        "orbit-reverse": "orbit-reverse 36s linear infinite",
+        handoff: "handoff 6.5s ease-in-out infinite",
         dash: "dash 30s linear infinite"
       }
     }
