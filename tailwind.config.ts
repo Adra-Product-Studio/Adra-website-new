@@ -93,8 +93,8 @@ const config: Config = {
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
         "pulse-soft": "pulse-soft 6s ease-in-out infinite",
-        "orbit-slow": "orbit-slow 48s linear infinite",
-        "orbit-reverse": "orbit-reverse 36s linear infinite",
+        "orbit-slow": "orbit-slow 20s linear infinite",
+        "orbit-reverse": "orbit-reverse 16s linear infinite",
         handoff: "handoff 6.5s ease-in-out infinite",
         dash: "dash 30s linear infinite"
       }
