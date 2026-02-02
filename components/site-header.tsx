@@ -6,21 +6,36 @@ import { cn } from "@/lib/utils";
 
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger
-} from "@/components/ui/sheet";
+import Image from "next/image";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 function Logo() {
   return (
     <div className="flex items-center gap-2">
-      <div className="relative flex h-8 w-8 items-center justify-center rounded-md border bg-background">
-        <span className="text-sm font-semibold tracking-tight">A</span>
-      </div>
-      <span className="text-sm font-semibold tracking-tight">
+      {/* <div className="relative flex h-8 w-8 items-center justify-center  border bg-background"> */}
+      {/* <span className="text-sm font-semibold tracking-tight">A</span> */}
+
+      {/* Light theme logo */}
+      <Image
+        src="/images/adra_logo_dark.png"
+        width={100}
+        height={70}
+        alt="Company Logo"
+        className="dark:hidden h-14 w-13 items-center justify-center"
+      />
+
+      {/* Dark theme logo */}
+      <Image
+        src="/images/adra_logo_light.png"
+        alt="Company Logo"
+        width={100}
+        height={75}
+        className="hidden dark:block h-20 w-15 items-center justify-center"
+      />
+      {/* </div> */}
+      {/* <span className="text-sm font-semibold tracking-tight">
         Adra Product Studio
-      </span>
+      </span> */}
     </div>
   );
 }
@@ -28,7 +43,7 @@ function Logo() {
 export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-20 items-center justify-between">
         <Link href="#top" className="hover:opacity-90">
           <Logo />
         </Link>
