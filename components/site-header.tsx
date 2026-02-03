@@ -28,8 +28,8 @@ function Logo() {
       <Image
         src="/images/adra_logo_light.png"
         alt="Company Logo"
-        width={100}
-        height={40}
+        width={70}
+        height={10}
         className="hidden dark:block items-center justify-center"
       />
       {/* </div> */}
