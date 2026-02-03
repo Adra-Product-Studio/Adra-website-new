@@ -18,10 +18,10 @@ function Logo() {
       {/* Light theme logo */}
       <Image
         src="/images/adra_logo_dark.png"
-        width={100}
-        height={70}
+        width={70}
+        height={10}
         alt="Company Logo"
-        className="dark:hidden h-14 w-13 items-center justify-center"
+        className="dark:hidden h-11  items-center justify-center"
       />
 
       {/* Dark theme logo */}
@@ -29,8 +29,8 @@ function Logo() {
         src="/images/adra_logo_light.png"
         alt="Company Logo"
         width={100}
-        height={75}
-        className="hidden dark:block h-20 w-15 items-center justify-center"
+        height={40}
+        className="hidden dark:block items-center justify-center"
       />
       {/* </div> */}
       {/* <span className="text-sm font-semibold tracking-tight">
