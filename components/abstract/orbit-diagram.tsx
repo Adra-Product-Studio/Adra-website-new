@@ -16,9 +16,6 @@ export function OrbitDiagram({
       aria-hidden
       className={cn(
         "relative aspect-square w-full max-w-[420px]",
-        "rounded-2xl border border-white/10 bg-background/70",
-        "backdrop-blur supports-[backdrop-filter]:bg-background/50",
-        "shadow-[0_0_40px_rgba(8,10,18,0.35)_inset]",
         className
       )}
     >
