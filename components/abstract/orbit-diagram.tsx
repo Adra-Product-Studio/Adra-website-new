@@ -9,9 +9,9 @@ type OrbitDiagramProps = {
 
 export function OrbitDiagram({
   className,
-  centerLabel = "Adra",
-  nodes = ["Strategy", "Discovery", "Design", "Build", "Launch", "Growth"]
+  centerLabel = "Adra"
 }: OrbitDiagramProps) {
+  const nodes = ["Strategy", "Discovery", "Design", "Build", "Launch", "Growth"];
   const nodePositions = [
     { x: 92, y: 218, align: "end" as const },
     { x: 114, y: 182, align: "end" as const },
