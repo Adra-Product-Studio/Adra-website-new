@@ -26,11 +26,6 @@ export function OrbitDiagram({
         aria-label="A nonlinear product journey from ambiguity to clarity and growth."
       >
         <defs>
-          <radialGradient id="fade" cx="50%" cy="50%" r="70%">
-            <stop offset="0%" stopColor="currentColor" stopOpacity="0.12" />
-            <stop offset="70%" stopColor="currentColor" stopOpacity="0.06" />
-            <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
-          </radialGradient>
           <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="currentColor" stopOpacity="0.55" />
             <stop offset="100%" stopColor="currentColor" stopOpacity="0" />
@@ -42,11 +37,8 @@ export function OrbitDiagram({
           </linearGradient>
         </defs>
 
-        {/* Soft vignette */}
-        <circle cx="160" cy="160" r="150" fill="url(#fade)" />
-
         {/* Phase 1: Fuzziness */}
-        <g opacity="0">
+        <g opacity="1">
           <animate
             attributeName="opacity"
             dur="2.6s"
@@ -91,7 +83,7 @@ export function OrbitDiagram({
             />
           </g>
         </g>
-        <g opacity="0">
+        <g opacity="1">
           <animate
             attributeName="opacity"
             begin="0.2s"
@@ -112,7 +104,7 @@ export function OrbitDiagram({
         </g>
 
         {/* Phase 2: Clarity */}
-        <g opacity="0">
+        <g opacity="1">
           <animate
             attributeName="opacity"
             dur="2.6s"
@@ -231,7 +223,7 @@ export function OrbitDiagram({
             />
           </g>
         </g>
-        <g opacity="0">
+        <g opacity="1">
           <animate
             attributeName="opacity"
             begin="0.25s"
@@ -248,7 +240,7 @@ export function OrbitDiagram({
         </g>
 
         {/* Phase 3: Growth */}
-        <g opacity="0">
+        <g opacity="1">
           <animate
             attributeName="opacity"
             dur="2.6s"
