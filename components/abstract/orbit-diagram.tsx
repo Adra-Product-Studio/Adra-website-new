@@ -9,8 +9,19 @@ type OrbitDiagramProps = {
 
 export function OrbitDiagram({
   className,
-  centerLabel = "Adra"
+  centerLabel = "Adra",
+  nodes = ["Strategy", "Discovery", "Design", "Build", "Launch", "Growth"]
 }: OrbitDiagramProps) {
+  const nodePositions = [
+    { x: 92, y: 218, align: "end" as const },
+    { x: 114, y: 182, align: "end" as const },
+    { x: 172, y: 136, align: "start" as const },
+    { x: 216, y: 150, align: "start" as const },
+    { x: 248, y: 184, align: "start" as const },
+    { x: 272, y: 222, align: "start" as const }
+  ];
+  const positions = nodes.map((_, index) => nodePositions[index] ?? nodePositions.at(-1)!);
+
   return (
     <div
       aria-hidden
@@ -37,74 +48,75 @@ export function OrbitDiagram({
           </linearGradient>
         </defs>
 
-        {/* Phase 1: Fuzziness */}
-        <g opacity="1">
-          <animate
-            attributeName="opacity"
-            dur="2.6s"
-            repeatCount="indefinite"
-            values="0;1;1;0"
-            keyTimes="0;0.12;0.38;0.48"
-            keySplines="0.3 0 0.6 1;0.4 0 0.6 1;0.3 0 0.6 1"
-            calcMode="spline"
-          />
-          <g opacity="0.6">
-            <circle cx="126" cy="146" r="2.2" fill="currentColor" opacity="0.3" />
-            <circle cx="176" cy="128" r="1.8" fill="currentColor" opacity="0.22" />
-            <circle cx="148" cy="182" r="2.1" fill="currentColor" opacity="0.26" />
-            <circle cx="198" cy="168" r="1.6" fill="currentColor" opacity="0.2" />
-            <circle cx="140" cy="124" r="1.4" fill="currentColor" opacity="0.18" />
-            <circle cx="184" cy="148" r="2.4" fill="currentColor" opacity="0.25" />
-            <circle cx="152" cy="156" r="1.5" fill="currentColor" opacity="0.2" />
-            <circle cx="170" cy="186" r="1.9" fill="currentColor" opacity="0.22" />
-            <circle cx="116" cy="170" r="1.6" fill="currentColor" opacity="0.18" />
-          </g>
-          <g opacity="0.5">
-            <circle r="2.4" fill="currentColor" opacity="0.35" />
-            <animateMotion
-              dur="1.2s"
+        <g transform="translate(160 152) scale(1.12) translate(-160 -160)">
+          {/* Phase 1: Fuzziness */}
+          <g opacity="1">
+            <animate
+              attributeName="opacity"
+              dur="2.6s"
               repeatCount="indefinite"
-              path="M150 150 C136 140 126 146 120 160 C116 172 122 186 136 192 C150 198 164 194 174 184 C184 174 186 160 178 150 C170 140 160 138 150 150"
-              keyTimes="0;1"
-              keySplines="0.4 0 0.6 1"
+              values="0;1;1;0"
+              keyTimes="0;0.12;0.38;0.48"
+              keySplines="0.3 0 0.6 1;0.4 0 0.6 1;0.3 0 0.6 1"
               calcMode="spline"
             />
+            <g opacity="0.6">
+              <circle cx="126" cy="146" r="2.2" fill="currentColor" opacity="0.3" />
+              <circle cx="176" cy="128" r="1.8" fill="currentColor" opacity="0.22" />
+              <circle cx="148" cy="182" r="2.1" fill="currentColor" opacity="0.26" />
+              <circle cx="198" cy="168" r="1.6" fill="currentColor" opacity="0.2" />
+              <circle cx="140" cy="124" r="1.4" fill="currentColor" opacity="0.18" />
+              <circle cx="184" cy="148" r="2.4" fill="currentColor" opacity="0.25" />
+              <circle cx="152" cy="156" r="1.5" fill="currentColor" opacity="0.2" />
+              <circle cx="170" cy="186" r="1.9" fill="currentColor" opacity="0.22" />
+              <circle cx="116" cy="170" r="1.6" fill="currentColor" opacity="0.18" />
+            </g>
+            <g opacity="0.5">
+              <circle r="2.4" fill="currentColor" opacity="0.35" />
+              <animateMotion
+                dur="1.2s"
+                repeatCount="indefinite"
+                path="M150 150 C136 140 126 146 120 160 C116 172 122 186 136 192 C150 198 164 194 174 184 C184 174 186 160 178 150 C170 140 160 138 150 150"
+                keyTimes="0;1"
+                keySplines="0.4 0 0.6 1"
+                calcMode="spline"
+              />
+            </g>
+            <g opacity="0.4">
+              <circle r="2.1" fill="currentColor" opacity="0.28" />
+              <animateMotion
+                begin="0.2s"
+                dur="1.4s"
+                repeatCount="indefinite"
+                path="M178 140 C196 148 206 164 204 182 C202 200 186 212 168 214 C150 216 134 208 126 194 C118 180 120 162 130 150 C140 138 158 134 178 140"
+                keyTimes="0;1"
+                keySplines="0.42 0 0.58 1"
+                calcMode="spline"
+              />
+            </g>
           </g>
-          <g opacity="0.4">
-            <circle r="2.1" fill="currentColor" opacity="0.28" />
-            <animateMotion
+          <g opacity="1">
+            <animate
+              attributeName="opacity"
               begin="0.2s"
-              dur="1.4s"
+              dur="2.6s"
               repeatCount="indefinite"
-              path="M178 140 C196 148 206 164 204 182 C202 200 186 212 168 214 C150 216 134 208 126 194 C118 180 120 162 130 150 C140 138 158 134 178 140"
-              keyTimes="0;1"
-              keySplines="0.42 0 0.58 1"
+              values="0;0.75;0.75;0"
+              keyTimes="0;0.15;0.36;0.46"
+              keySplines="0.3 0 0.6 1;0.4 0 0.6 1;0.3 0 0.6 1"
               calcMode="spline"
             />
+            <g opacity="0.5">
+              <circle cx="138" cy="162" r="1.4" fill="currentColor" opacity="0.18" />
+              <circle cx="188" cy="158" r="2" fill="currentColor" opacity="0.24" />
+              <circle cx="156" cy="132" r="1.6" fill="currentColor" opacity="0.2" />
+              <circle cx="170" cy="176" r="1.7" fill="currentColor" opacity="0.22" />
+              <circle cx="120" cy="152" r="1.3" fill="currentColor" opacity="0.16" />
+            </g>
           </g>
-        </g>
-        <g opacity="1">
-          <animate
-            attributeName="opacity"
-            begin="0.2s"
-            dur="2.6s"
-            repeatCount="indefinite"
-            values="0;0.75;0.75;0"
-            keyTimes="0;0.15;0.36;0.46"
-            keySplines="0.3 0 0.6 1;0.4 0 0.6 1;0.3 0 0.6 1"
-            calcMode="spline"
-          />
-          <g opacity="0.5">
-            <circle cx="138" cy="162" r="1.4" fill="currentColor" opacity="0.18" />
-            <circle cx="188" cy="158" r="2" fill="currentColor" opacity="0.24" />
-            <circle cx="156" cy="132" r="1.6" fill="currentColor" opacity="0.2" />
-            <circle cx="170" cy="176" r="1.7" fill="currentColor" opacity="0.22" />
-            <circle cx="120" cy="152" r="1.3" fill="currentColor" opacity="0.16" />
-          </g>
-        </g>
 
-        {/* Phase 2: Clarity */}
-        <g opacity="1">
+          {/* Phase 2: Clarity */}
+          <g opacity="1">
           <animate
             attributeName="opacity"
             dur="2.6s"
@@ -222,8 +234,8 @@ export function OrbitDiagram({
               calcMode="spline"
             />
           </g>
-        </g>
-        <g opacity="1">
+          </g>
+          <g opacity="1">
           <animate
             attributeName="opacity"
             begin="0.25s"
@@ -237,10 +249,10 @@ export function OrbitDiagram({
           <circle cx="178" cy="190" r="2.6" fill="currentColor" opacity="0.6" />
           <circle cx="150" cy="206" r="2.2" fill="currentColor" opacity="0.5" />
           <circle cx="206" cy="174" r="2.4" fill="currentColor" opacity="0.55" />
-        </g>
+          </g>
 
         {/* Phase 3: Growth */}
-        <g opacity="1">
+          <g opacity="1">
           <animate
             attributeName="opacity"
             dur="2.6s"
@@ -319,9 +331,31 @@ export function OrbitDiagram({
               calcMode="spline"
             />
           </g>
+          </g>
         </g>
 
         {/* Labels */}
+        {nodes.map((label, index) => {
+          const position = positions[index];
+          return (
+            <text
+              key={label}
+              x={position.x}
+              y={position.y}
+              textAnchor={position.align}
+              fontSize="12"
+              fill="currentColor"
+              opacity="0.85"
+              stroke="currentColor"
+              strokeOpacity="0.35"
+              strokeWidth="0.6"
+              paintOrder="stroke"
+              style={{ letterSpacing: 0.6 }}
+            >
+              {label}
+            </text>
+          );
+        })}
         <text
           x="160"
           y="166"
