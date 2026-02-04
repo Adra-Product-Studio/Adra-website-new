@@ -16,9 +16,6 @@ export function OrbitDiagram({
       aria-hidden
       className={cn(
         "relative aspect-square w-full max-w-[420px]",
-        "rounded-2xl border border-white/10 bg-background/70",
-        "backdrop-blur supports-[backdrop-filter]:bg-background/50",
-        "shadow-[0_0_40px_rgba(8,10,18,0.35)_inset]",
         className
       )}
     >
@@ -52,7 +49,7 @@ export function OrbitDiagram({
         <g opacity="0">
           <animate
             attributeName="opacity"
-            dur="24s"
+            dur="2.6s"
             repeatCount="indefinite"
             values="0;1;1;0"
             keyTimes="0;0.12;0.38;0.48"
@@ -73,7 +70,7 @@ export function OrbitDiagram({
           <g opacity="0.5">
             <circle r="2.4" fill="currentColor" opacity="0.35" />
             <animateMotion
-              dur="12s"
+              dur="1.2s"
               repeatCount="indefinite"
               path="M150 150 C136 140 126 146 120 160 C116 172 122 186 136 192 C150 198 164 194 174 184 C184 174 186 160 178 150 C170 140 160 138 150 150"
               keyTimes="0;1"
@@ -84,8 +81,8 @@ export function OrbitDiagram({
           <g opacity="0.4">
             <circle r="2.1" fill="currentColor" opacity="0.28" />
             <animateMotion
-              begin="1.2s"
-              dur="14s"
+              begin="0.2s"
+              dur="1.4s"
               repeatCount="indefinite"
               path="M178 140 C196 148 206 164 204 182 C202 200 186 212 168 214 C150 216 134 208 126 194 C118 180 120 162 130 150 C140 138 158 134 178 140"
               keyTimes="0;1"
@@ -97,8 +94,8 @@ export function OrbitDiagram({
         <g opacity="0">
           <animate
             attributeName="opacity"
-            begin="1.6s"
-            dur="24s"
+            begin="0.2s"
+            dur="2.6s"
             repeatCount="indefinite"
             values="0;0.75;0.75;0"
             keyTimes="0;0.15;0.36;0.46"
@@ -118,7 +115,7 @@ export function OrbitDiagram({
         <g opacity="0">
           <animate
             attributeName="opacity"
-            dur="24s"
+            dur="2.6s"
             repeatCount="indefinite"
             values="0;1;1;0"
             keyTimes="0.28;0.42;0.62;0.72"
@@ -137,7 +134,7 @@ export function OrbitDiagram({
             <circle cx="132" cy="180" r="2" fill="currentColor" opacity="0.4">
               <animate
                 attributeName="cx"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="128;132;132"
                 keyTimes="0.28;0.42;0.62"
@@ -146,7 +143,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="cy"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="174;180;180"
                 keyTimes="0.28;0.42;0.62"
@@ -155,7 +152,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="opacity"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="0.2;0.55;0.55"
                 keyTimes="0.28;0.42;0.62"
@@ -166,7 +163,7 @@ export function OrbitDiagram({
             <circle cx="162" cy="150" r="2.4" fill="currentColor" opacity="0.45">
               <animate
                 attributeName="cx"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="158;162;162"
                 keyTimes="0.28;0.42;0.62"
@@ -175,7 +172,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="cy"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="156;150;150"
                 keyTimes="0.28;0.42;0.62"
@@ -184,7 +181,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="opacity"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="0.25;0.65;0.65"
                 keyTimes="0.28;0.42;0.62"
@@ -195,7 +192,7 @@ export function OrbitDiagram({
             <circle cx="196" cy="156" r="2" fill="currentColor" opacity="0.4">
               <animate
                 attributeName="cx"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="202;196;196"
                 keyTimes="0.28;0.42;0.62"
@@ -204,7 +201,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="cy"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="162;156;156"
                 keyTimes="0.28;0.42;0.62"
@@ -213,7 +210,7 @@ export function OrbitDiagram({
               />
               <animate
                 attributeName="opacity"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="0.2;0.6;0.6"
                 keyTimes="0.28;0.42;0.62"
@@ -225,7 +222,7 @@ export function OrbitDiagram({
           <g opacity="0.6">
             <circle r="2.6" fill="currentColor" opacity="0.5" />
             <animateMotion
-              dur="16s"
+              dur="1.4s"
               repeatCount="indefinite"
               path="M126 196 C146 170 168 156 190 156 C212 156 224 170 218 190 C212 210 190 220 166 220 C142 220 126 210 126 196"
               keyTimes="0;1"
@@ -237,8 +234,8 @@ export function OrbitDiagram({
         <g opacity="0">
           <animate
             attributeName="opacity"
-            begin="1.4s"
-            dur="24s"
+            begin="0.25s"
+            dur="2.6s"
             repeatCount="indefinite"
             values="0;0.8;0.8;0"
             keyTimes="0.3;0.46;0.6;0.7"
@@ -254,7 +251,7 @@ export function OrbitDiagram({
         <g opacity="0">
           <animate
             attributeName="opacity"
-            dur="24s"
+            dur="2.6s"
             repeatCount="indefinite"
             values="0;1;1;0"
             keyTimes="0.55;0.68;0.95;1"
@@ -288,7 +285,7 @@ export function OrbitDiagram({
             <circle cx="140" cy="206" r="3.2" fill="currentColor" opacity="0.6">
               <animate
                 attributeName="r"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="2.4;3.6;4"
                 keyTimes="0.55;0.72;0.95"
@@ -299,7 +296,7 @@ export function OrbitDiagram({
             <circle cx="198" cy="186" r="3" fill="currentColor" opacity="0.6">
               <animate
                 attributeName="r"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="2.2;3.4;3.8"
                 keyTimes="0.55;0.72;0.95"
@@ -310,7 +307,7 @@ export function OrbitDiagram({
             <circle cx="246" cy="196" r="3.6" fill="currentColor" opacity="0.65">
               <animate
                 attributeName="r"
-                dur="24s"
+                dur="2.6s"
                 repeatCount="indefinite"
                 values="2.6;3.8;4.6"
                 keyTimes="0.55;0.72;0.95"
@@ -322,7 +319,7 @@ export function OrbitDiagram({
           <g opacity="0.6">
             <circle r="3" fill="currentColor" opacity="0.6" />
             <animateMotion
-              dur="18s"
+              dur="1.6s"
               repeatCount="indefinite"
               path="M170 192 C198 180 220 178 242 186 C264 194 274 210 272 226 C270 242 254 254 230 256 C206 258 186 250 172 236 C158 222 156 204 170 192"
               keyTimes="0;1"
