@@ -5,7 +5,6 @@ import { cn } from "@/lib/utils";
 type OrbitDiagramProps = {
   className?: string;
   centerLabel?: string;
-  nodes?: string[];
 };
 
 export function OrbitDiagram({
