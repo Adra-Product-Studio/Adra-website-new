@@ -69,7 +69,9 @@ export default function HomePage() {
               <div className="flex flex-wrap items-center gap-2 rounded-full border border-muted/60 bg-background/80 px-3 py-2 shadow-sm">
                 <Badge>Startups</Badge>
                 <Badge>Enterprises</Badge>
-                <Badge variant="secondary">Product · UX · Engineering · Data</Badge>
+                <Badge variant="secondary">
+                  Product · UX · Engineering · Data
+                </Badge>
               </div>
 
               <h1 className="mt-8 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
@@ -77,14 +79,17 @@ export default function HomePage() {
               </h1>
 
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Adra Product Studio helps teams move from early ambiguity to shipped software.
-                We bring product thinking, UX, full-stack delivery, data, and ops—then hand off cleanly
-                when you want to build internally.
+                Adra Product Studio helps teams move from early ambiguity to
+                shipped software. We bring product thinking, UX, full-stack
+                delivery, data, and ops—then hand off cleanly when you want to
+                build internally.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Button asChild>
-                  <a href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}>
+                  <a
+                    href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
+                  >
                     Start a conversation
                   </a>
                 </Button>
@@ -127,7 +132,8 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  We take responsibility for delivery and quality, not just tasks.
+                  We take responsibility for delivery and quality, not just
+                  tasks.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
                   <li>• Clear scope and tradeoffs</li>
@@ -189,7 +195,10 @@ export default function HomePage() {
       </section>
 
       {/* Startups */}
-      <section id="startups" className="scroll-mt-24 bg-background text-foreground">
+      <section
+        id="startups"
+        className="scroll-mt-24 bg-background text-foreground"
+      >
         <div className="container py-16">
           <SectionHeading
             eyebrow="Startups"
@@ -202,17 +211,27 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>What we take on</CardTitle>
                 <CardDescription>
-                  Cross-functional execution so you don’t have to assemble a full org up front.
+                  Cross-functional execution so you don’t have to assemble a
+                  full org up front.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Product shaping: scope, tradeoffs, and release planning</li>
+                  <li>
+                    • Product shaping: scope, tradeoffs, and release planning
+                  </li>
                   <li>• UX/UI and design systems (where it reduces rework)</li>
                   <li>• Full-stack engineering, QA, and deployment</li>
-                  <li>• Data engineering, analytics instrumentation, and dashboards</li>
-                  <li>• Data science / ML when it directly supports the product</li>
-                  <li>• Product ops and customer success enablement as needed</li>
+                  <li>
+                    • Data engineering, analytics instrumentation, and
+                    dashboards
+                  </li>
+                  <li>
+                    • Data science / ML when it directly supports the product
+                  </li>
+                  <li>
+                    • Product ops and customer success enablement as needed
+                  </li>
                 </ul>
               </CardContent>
             </Card>
@@ -221,7 +240,8 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>What you keep in focus</CardTitle>
                 <CardDescription>
-                  Founders stay on vision and validation while delivery keeps moving.
+                  Founders stay on vision and validation while delivery keeps
+                  moving.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -234,10 +254,13 @@ export default function HomePage() {
                 </ul>
 
                 <div className="mt-6 rounded-xl border border-muted/50 bg-muted/30 p-4">
-                  <div className="text-sm font-medium">Handoff is part of the plan</div>
+                  <div className="text-sm font-medium">
+                    Handoff is part of the plan
+                  </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    As your internal team forms, we document decisions, improve maintainability,
-                    and transfer ownership without slowing delivery.
+                    As your internal team forms, we document decisions, improve
+                    maintainability, and transfer ownership without slowing
+                    delivery.
                   </p>
                 </div>
               </CardContent>
@@ -263,7 +286,8 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>How we fit</CardTitle>
                 <CardDescription>
-                  Lean delivery, clear decisions, and practical engineering that respects enterprise constraints.
+                  Lean delivery, clear decisions, and practical engineering that
+                  respects enterprise constraints.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -298,7 +322,10 @@ export default function HomePage() {
       </section>
 
       {/* Capabilities */}
-      <section id="capabilities" className="scroll-mt-24 bg-background text-foreground">
+      <section
+        id="capabilities"
+        className="scroll-mt-24 bg-background text-foreground"
+      >
         <div className="container py-16">
           <SectionHeading
             eyebrow="Capabilities"
@@ -324,11 +351,14 @@ export default function HomePage() {
           </div>
 
           <div className="mt-10 rounded-2xl border border-muted/50 bg-gradient-to-br from-muted/40 via-background to-background p-6 shadow-sm">
-            <div className="text-sm font-medium">A note on technology choices</div>
+            <div className="text-sm font-medium">
+              A note on technology choices
+            </div>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              We bias toward maintainable, well-understood stacks and clear interfaces.
-              When you need to scale, we’d rather rely on solid foundations (testing, observability,
-              data contracts, and documentation) than last-minute rewrites.
+              We bias toward maintainable, well-understood stacks and clear
+              interfaces. When you need to scale, we’d rather rely on solid
+              foundations (testing, observability, data contracts, and
+              documentation) than last-minute rewrites.
             </p>
           </div>
         </div>
@@ -367,7 +397,10 @@ export default function HomePage() {
       </section>
 
       {/* Clients */}
-      <section id="clients" className="scroll-mt-24 bg-background text-foreground">
+      <section
+        id="clients"
+        className="scroll-mt-24 bg-background text-foreground"
+      >
         <div className="container py-16">
           <SectionHeading
             eyebrow="Clients"
@@ -385,19 +418,29 @@ export default function HomePage() {
                 className="group rounded-2xl border border-muted/60 bg-background/70 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-muted/30 hover:shadow-lg"
               >
                 <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold tracking-tight">{c.name}</div>
+                  <div className="text-sm font-semibold tracking-tight">
+                    {c.name}
+                  </div>
                   <div className="text-xs text-muted-foreground group-hover:text-foreground">
                     ↗
                   </div>
                 </div>
-                <div className="mt-3 text-xs text-muted-foreground">{c.href.replace('https://', '').replace('www.', '').replace(/\/$/, '')}</div>
+                <div className="mt-3 text-xs text-muted-foreground">
+                  {c.href
+                    .replace("https://", "")
+                    .replace("www.", "")
+                    .replace(/\/$/, "")}
+                </div>
               </a>
             ))}
 
             <div className="rounded-2xl border border-muted/50 bg-muted/20 p-6 shadow-sm">
-              <div className="text-sm font-semibold tracking-tight">{stealthNote}</div>
+              <div className="text-sm font-semibold tracking-tight">
+                {stealthNote}
+              </div>
               <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                We can share additional references in conversation when it’s appropriate.
+                We can share additional references in conversation when it’s
+                appropriate.
               </p>
             </div>
           </div>
@@ -407,46 +450,54 @@ export default function HomePage() {
       {/* FAQ */}
       <section className="section-invert border-t border-border/60 bg-background text-foreground">
         <div className="container py-16">
-          <SectionHeading
-            eyebrow="FAQ"
-            title="A few practical questions."
-          />
+          <SectionHeading eyebrow="FAQ" title="A few practical questions." />
 
           <div className="mt-10 max-w-3xl">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>How do we start?</AccordionTrigger>
                 <AccordionContent>
-                  We begin by aligning on the problem, constraints, and what “good” looks like.
-                  From there, we propose an initial scope and a delivery cadence with regular demos.
+                  We begin by aligning on the problem, constraints, and what
+                  “good” looks like. From there, we propose an initial scope and
+                  a delivery cadence with regular demos.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
-                <AccordionTrigger>Do you work with existing teams?</AccordionTrigger>
+                <AccordionTrigger>
+                  Do you work with existing teams?
+                </AccordionTrigger>
                 <AccordionContent>
-                  Yes. We can embed with your engineers and designers, or run a defined track in parallel.
-                  The goal is clear ownership and minimal coordination overhead.
+                  Yes. We can embed with your engineers and designers, or run a
+                  defined track in parallel. The goal is clear ownership and
+                  minimal coordination overhead.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger>How do you handle handoff?</AccordionTrigger>
                 <AccordionContent>
-                  We treat handoff as an outcome, not a last step: decisions are documented, code is
-                  reviewed for maintainability, and we can support onboarding so your team can own confidently.
+                  We treat handoff as an outcome, not a last step: decisions are
+                  documented, code is reviewed for maintainability, and we can
+                  support onboarding so your team can own confidently.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
-                <AccordionTrigger>Can you help with scaling and hiring?</AccordionTrigger>
+                <AccordionTrigger>
+                  Can you help with scaling and hiring?
+                </AccordionTrigger>
                 <AccordionContent>
-                  We can help define roles, participate in technical interviews, and build onboarding materials.
-                  When your internal team is ready, we step back or stay on in a smaller support role.
+                  We can help define roles, participate in technical interviews,
+                  and build onboarding materials. When your internal team is
+                  ready, we step back or stay on in a smaller support role.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-5">
-                <AccordionTrigger>What does engagement look like commercially?</AccordionTrigger>
+                <AccordionTrigger>
+                  What does engagement look like commercially?
+                </AccordionTrigger>
                 <AccordionContent>
-                  Typically either a monthly retainer for a small team, or a scoped project with milestones.
-                  We keep the structure lightweight and the expectations explicit.
+                  Typically either a monthly retainer for a small team, or a
+                  scoped project with milestones. We keep the structure
+                  lightweight and the expectations explicit.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -471,12 +522,15 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>Email</CardTitle>
                 <CardDescription>
-                  The simplest way to start is a message with your goal and constraints.
+                  The simplest way to start is a message with your goal and
+                  constraints.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <Button asChild>
-                  <a href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}>
+                  <a
+                    href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
+                  >
                     {site.email}
                   </a>
                 </Button>
@@ -500,17 +554,32 @@ export default function HomePage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="text-sm text-muted-foreground">
-                  {site.addressLines.map((line) => (
-                    <div key={line}>{line}</div>
-                  ))}
+                <div className="grid gap-6 sm:grid-cols-2">
+                  <div className="text-sm text-muted-foreground">
+                    <div className="mb-2 text-xs font-medium text-muted-foreground">
+                      India Address
+                    </div>
+                    {site.indiaAddressLines.map((line) => (
+                      <div key={`in-${line}`}>{line}</div>
+                    ))}
+                  </div>
+
+                  <div className="text-sm text-muted-foreground">
+                    <div className="mb-2 text-xs font-medium text-muted-foreground">
+                      US Address
+                    </div>
+                    {site.USaddressLines.map((line) => (
+                      <div key={`us-${line}`}>{line}</div>
+                    ))}
+                  </div>
                 </div>
 
                 <div className="mt-6 rounded-xl border border-muted/50 bg-muted/20 p-4">
                   <div className="text-sm font-medium">Working style</div>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Small team. Clear ownership. Short cycles. Decisions written down.
-                    We optimize for shipping a reliable product—not creating process.
+                    Small team. Clear ownership. Short cycles. Decisions written
+                    down. We optimize for shipping a reliable product—not
+                    creating process.
                   </p>
                 </div>
               </CardContent>

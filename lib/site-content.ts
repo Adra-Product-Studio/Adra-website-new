@@ -2,11 +2,16 @@ export const site = {
   name: "Adra Product Studio",
   url: "https://adraproductstudio.com",
   email: "vedha@adraproductstudio.com",
-  addressLines: [
+  indiaAddressLines: [
     "Sf No. 415, Codissia Road,",
     "Thaneerpandal Rd, Peelamedu,",
-    "Coimbatore, Tamil Nadu 641004"
-  ]
+    "Coimbatore, Tamil Nadu 641004",
+  ],
+  USaddressLines: [
+    "Adra Product Studio LLC",
+    "3167 Davenport Rd",
+    "Duluth, Georgia - 30096",
+  ],
 } as const;
 
 export const navItems = [
