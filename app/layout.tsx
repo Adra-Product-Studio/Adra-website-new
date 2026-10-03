@@ -3,9 +3,12 @@ import { Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
 import "./studio.css";
+import "./palette.css";
+import "./decision-room.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteFooter } from "@/components/site-footer";
+import { StudioNavigation } from "@/components/studio-navigation";
 import { SiteHeader } from "@/components/site-header";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"], display: "swap" });
@@ -33,12 +36,10 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({
-  children
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${plusJakartaSans.className} studio-shell`}>
+      <body className={`${plusJakartaSans.className} studio-shell dd-shell`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -46,9 +47,14 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background">
-            <a href="#main-content" className="studio-skip">Skip to content</a>
+            <a href="#main-content" className="studio-skip">
+              Skip to content
+            </a>
+            <StudioNavigation />
             <SiteHeader />
-            <main id="main-content" className="relative">{children}</main>
+            <main id="main-content" className="relative">
+              {children}
+            </main>
             <SiteFooter />
           </div>
         </ThemeProvider>

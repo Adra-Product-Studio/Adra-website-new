@@ -1,67 +1,40 @@
 import { site } from "@/lib/site-content";
-import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t">
-      <div className="container py-10">
-        <div className="grid gap-8 md:grid-cols-12">
-          {/* Left side (smaller) */}
-          <div className="md:col-span-4">
-            <div className="text-sm font-semibold">{site.name}</div>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Product direction, technical judgment, and delivery for
-              founders and leadership teams.
+    <footer className="dd-footer">
+      <div className="dd-wrap">
+        <div className="dd-footer-top">
+          <div>
+            <div className="dd-footer-brand">{site.name}</div>
+            <p className="dd-footer-summary">
+              Product direction, technical judgment, and delivery for founders and leadership teams.
             </p>
           </div>
-
-{/* Right side (responsive) */}
-<div className="grid gap-6 md:gap-10 md:col-span-8 md:grid-cols-2 lg:grid-cols-3">
-  <div>
-    <div className="text-xs font-medium text-muted-foreground">Email</div>
-    <a
-      href={`mailto:${site.email}`}
-      className="mt-2 inline-block text-sm hover:underline break-all md:break-normal"
-    >
-      {site.email}
-    </a>
-  </div>
-
-  <div>
-    <div className="text-xs font-medium text-muted-foreground">India Address</div>
-    <div className="mt-2 text-sm text-muted-foreground">
-      {site.indiaAddressLines.map((line) => (
-        <div key={`in-${line}`}>{line}</div>
-      ))}
-    </div>
-  </div>
-
-  <div className="md:col-span-2 lg:col-span-1">
-    <div className="text-xs font-medium text-muted-foreground">US Address</div>
-    <div className="mt-2 text-sm text-muted-foreground">
-      {site.USaddressLines.map((line) => (
-        <div key={`us-${line}`}>{line}</div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-        </div>
-
-        <Separator className="my-8" />
-
-        <div className="flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
           <div>
-            © {new Date().getFullYear()} {site.name}
+            <p className="dd-footer-label">India</p>
+            <address>
+              {site.indiaAddressLines.map((line) => (
+                <div key={line}>{line}</div>
+              ))}
+            </address>
           </div>
-          <div className="flex gap-4">
-            <a href="#top" className="hover:underline">
-              Back to top
-            </a>
-            <a href="#contact" className="hover:underline">
-              Contact
-            </a>
+          <div>
+            <p className="dd-footer-label">United States</p>
+            <address>
+              {site.USaddressLines.map((line) => (
+                <div key={line}>{line}</div>
+              ))}
+            </address>
+          </div>
+        </div>
+        <div className="dd-footer-bottom">
+          <span>
+            © {new Date().getFullYear()} {site.name}
+          </span>
+          <div>
+            <a href="#top">Back to top ↑</a>
+            <a href={`mailto:${site.email}`}>Email ↗</a>
           </div>
         </div>
       </div>
