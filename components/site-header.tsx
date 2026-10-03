@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
 
 function Logo() {
   return (
@@ -20,17 +20,17 @@ function Logo() {
         src="/images/adra_logo_dark.png"
         width={70}
         height={10}
-        alt="Company Logo"
-        className="dark:hidden h-11  items-center justify-center"
+        alt="Adra Product Studio"
+        className="dark:hidden h-auto w-[70px]"
       />
 
       {/* Dark theme logo */}
       <Image
         src="/images/adra_logo_light.png"
-        alt="Company Logo"
+        alt="Adra Product Studio"
         width={70}
         height={10}
-        className="hidden dark:block items-center justify-center"
+        className="hidden dark:block h-auto w-[70px]"
       />
       {/* </div> */}
       {/* <span className="text-sm font-semibold tracking-tight">
@@ -42,14 +42,14 @@ function Logo() {
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="studio-header sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-20 items-center justify-between">
         <Link href="#top" className="hover:opacity-90">
           <Logo />
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -67,19 +67,21 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <ModeToggle />
 
-          <Button asChild className="hidden md:inline-flex">
+          <Button asChild className="hidden lg:inline-flex">
             <a href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}>Contact</a>
           </Button>
 
           {/* Mobile */}
-          <div className="md:hidden">
+          <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" aria-label="Open menu">
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[320px]">
+              <SheetContent side="right" className="w-[320px] max-w-full">
+                <SheetTitle className="sr-only">Site navigation</SheetTitle>
+                <SheetDescription className="sr-only">Explore Adra Product Studio.</SheetDescription>
                 <div className="flex items-center justify-between">
                   <Link href="#top" className="hover:opacity-90">
                     <Logo />
@@ -88,13 +90,11 @@ export function SiteHeader() {
 
                 <div className="mt-8 flex flex-col gap-4">
                   {navItems.map((item) => (
-                    <a
-                      key={item.href}
-                      href={item.href}
-                      className="text-sm text-muted-foreground hover:text-foreground"
-                    >
-                      {item.label}
-                    </a>
+                    <SheetClose asChild key={item.href}>
+                      <a href={item.href} className="py-2 text-sm text-muted-foreground hover:text-foreground">
+                        {item.label}
+                      </a>
+                    </SheetClose>
                   ))}
                 </div>
 

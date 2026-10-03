@@ -10,7 +10,7 @@ import {
 } from "@/lib/site-content";
 
 import { ProductStory } from "@/components/product-story";
-import { MonoGrid } from "@/components/abstract/mono-grid";
+import { StudioMotion } from "@/components/studio-motion";
 
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -33,7 +33,7 @@ function SectionHeading({
   description?: string;
 }) {
   return (
-    <div className="max-w-2xl">
+    <div className="studio-heading max-w-2xl">
       {eyebrow ? (
         <div className="inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
           <span className="h-px w-6 bg-gradient-to-r from-transparent via-muted-foreground to-transparent" />
@@ -54,14 +54,14 @@ function SectionHeading({
 
 export default function HomePage() {
   const cardClassName =
-    "border-border/60 bg-card/90 text-card-foreground shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg";
+    "studio-card border-border/60 bg-card/90 text-card-foreground";
 
   return (
-    <div id="top" className="relative bg-noise">
-      <MonoGrid className="-z-10" />
+    <div id="top" className="studio-home relative">
+      <StudioMotion />
 
       {/* Hero */}
-      <section className="relative">
+      <section className="studio-hero relative">
         <div className="container pb-12 pt-16 sm:pb-16 sm:pt-24">
           <div className="grid items-center gap-12 lg:grid-cols-2">
             <div>
@@ -110,7 +110,7 @@ export default function HomePage() {
       </section>
 
       {/* Principles */}
-      <section className="section-invert bg-background text-foreground">
+      <section id="approach" className="studio-principles section-invert bg-background text-foreground">
         <div className="container py-16">
           <SectionHeading
             eyebrow="How we work"
@@ -401,7 +401,7 @@ export default function HomePage() {
             description="A small sample of companies we’ve worked with."
           />
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="studio-clients mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {clientLinks.map((c) => (
               <a
                 key={c.href}
@@ -441,11 +441,11 @@ export default function HomePage() {
       </section>
 
       {/* FAQ */}
-      <section className="section-invert border-t border-border/60 bg-background text-foreground">
+      <section id="questions" className="studio-questions section-invert border-t border-border/60 bg-background text-foreground">
         <div className="container py-16">
           <SectionHeading eyebrow="FAQ" title="A few practical questions." />
 
-          <div className="mt-10 max-w-3xl">
+          <div className="studio-faq mt-10 max-w-3xl">
             <Accordion type="single" collapsible>
               <AccordionItem value="item-1">
                 <AccordionTrigger>How do we start?</AccordionTrigger>
