@@ -1,68 +1,45 @@
 import { site } from "@/lib/site-content";
-import { Separator } from "@/components/ui/separator";
+import { SectionLink } from "@/components/studio-navigation";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t">
-      <div className="container py-10">
-        <div className="grid gap-8 md:grid-cols-12">
-          {/* Left side (smaller) */}
-          <div className="md:col-span-4">
-            <div className="text-sm font-semibold">{site.name}</div>
-            <p className="mt-2 text-sm text-muted-foreground">
-              Product direction, technical judgment, and delivery for
-              founders and leadership teams.
-            </p>
-          </div>
-
-{/* Right side (responsive) */}
-<div className="grid gap-6 md:gap-10 md:col-span-8 md:grid-cols-2 lg:grid-cols-3">
-  <div>
-    <div className="text-xs font-medium text-muted-foreground">Email</div>
-    <a
-      href={`mailto:${site.email}`}
-      className="mt-2 inline-block text-sm hover:underline break-all md:break-normal"
-    >
-      {site.email}
-    </a>
-  </div>
-
-  <div>
-    <div className="text-xs font-medium text-muted-foreground">India Address</div>
-    <div className="mt-2 text-sm text-muted-foreground">
-      {site.indiaAddressLines.map((line) => (
-        <div key={`in-${line}`}>{line}</div>
-      ))}
-    </div>
-  </div>
-
-  <div className="md:col-span-2 lg:col-span-1">
-    <div className="text-xs font-medium text-muted-foreground">US Address</div>
-    <div className="mt-2 text-sm text-muted-foreground">
-      {site.USaddressLines.map((line) => (
-        <div key={`us-${line}`}>{line}</div>
-      ))}
-    </div>
-  </div>
-</div>
-
-
-        </div>
-
-        <Separator className="my-8" />
-
-        <div className="flex flex-col gap-2 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+    <footer className="e-footer">
+      <div className="e-wrap">
+        <div className="e-footer-main">
           <div>
+            <p className="e-footer-name">{site.name}</p>
+            <p>
+              Product direction, technical judgment,
+              <br />
+              and delivery.
+            </p>
+            <p className="e-footer-note">For founders and leadership teams.</p>
+          </div>
+          <div>
+            <h2>India</h2>
+            <address>
+              {site.indiaAddressLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </address>
+          </div>
+          <div>
+            <h2>United States</h2>
+            <address>
+              {site.USaddressLines.map((line) => (
+                <span key={line}>{line}</span>
+              ))}
+            </address>
+          </div>
+        </div>
+        <div className="e-footer-bottom">
+          <span>
             © {new Date().getFullYear()} {site.name}
-          </div>
-          <div className="flex gap-4">
-            <a href="#top" className="hover:underline">
-              Back to top
-            </a>
-            <a href="#contact" className="hover:underline">
-              Contact
-            </a>
-          </div>
+          </span>
+          <span>Remote collaboration. Shared ownership.</span>
+          <SectionLink href="#top">
+            Back to the beginning <span aria-hidden="true">↑</span>
+          </SectionLink>
         </div>
       </div>
     </footer>

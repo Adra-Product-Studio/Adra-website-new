@@ -1,565 +1,458 @@
-import Link from "next/link";
-
-import {
-  clientLinks,
-  coreDisciplines,
-  engagementModels,
-  enterpriseCapabilities,
-  site,
-  stealthNote
-} from "@/lib/site-content";
-
+import { SectionLink } from "@/components/studio-navigation";
 import { ProductStory } from "@/components/product-story";
-import { StudioMotion } from "@/components/studio-motion";
-
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+import { ProcessVignette } from "@/components/process-vignette";
+import { EditorialMotion } from "@/components/editorial-motion";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger
 } from "@/components/ui/accordion";
+import {
+  clientLinks,
+  coreDisciplines,
+  engagementModels,
+  enterpriseCapabilities,
+  site
+} from "@/lib/site-content";
 
-function SectionHeading({
-  eyebrow,
-  title,
-  description
-}: {
-  eyebrow?: string;
-  title: string;
-  description?: string;
-}) {
+const principles = [
+  {
+    title: "Start with the goal",
+    text: "Agree on the problem and success measures. Connect the long-term direction to near-term priorities, milestones, and budget."
+  },
+  {
+    title: "Choose for context",
+    text: "Build, buy, or integrate. Weigh running costs, maintainability, security, and compliance against the work ahead."
+  },
+  {
+    title: "Set the right pace",
+    text: "Name decision owners. Match the team, review process, release controls, and AI practices to the risk."
+  },
+  {
+    title: "Keep progress visible",
+    text: "Review demos, spend, risks, and adoption against agreed commitments. Make decisions together as the evidence changes."
+  }
+];
+const startupDecisions = [
+  {
+    title: "Establish what matters",
+    text: "The customer problem, the assumptions behind it, and the evidence needed to move forward."
+  },
+  {
+    title: "Make the first commitments",
+    text: "A product vision and first release. Clear priorities, budget, milestones, and tradeoffs—with architecture and staffing that leave room to grow."
+  },
+  {
+    title: "Deliver, learn, adjust",
+    text: "UX, engineering, data, and quality in one team. Short releases, real user feedback, visible costs, and the preparation to launch and support customers."
+  }
+];
+const enterpriseDecisions = [
+  {
+    title: "Align the organization",
+    text: "A roadmap with a budget, dependencies, and decision owners. Staffing and coordination across the teams involved."
+  },
+  {
+    title: "Respect the operating context",
+    text: "Architecture that works with existing systems. Security, compliance, and review built into the plan."
+  },
+  {
+    title: "Make change usable",
+    text: "Pilot, rollout, and training. Clear reporting on progress, risks, and the decisions leadership needs to make."
+  }
+];
+const capabilityQuestions = [
+  "What should we build next?",
+  "What will support it over time?",
+  "Where does intelligence help?",
+  "How will the work get done?"
+];
+const engagementFit = [
+  "An outcome to work towards",
+  "An initiative or team to strengthen",
+  "A product to keep improving"
+];
+const questions = [
+  [
+    "How do we start?",
+    "We start with the business goal and constraints, then propose a first phase with priorities, budget, team shape, and decision points."
+  ],
+  [
+    "Can you work with our team and help it grow?",
+    "Yes. We embed or lead an initiative alongside your team. We can also shape roles, assess technical hires, and onboard people."
+  ],
+  [
+    "How do you handle handoff?",
+    "We document decisions, keep code maintainable, and build runbooks as we go. Walkthroughs and a planned transition give your team the context to operate and extend the product."
+  ],
+  [
+    "How do you stay accountable?",
+    "We agree on delivery commitments and success measures, then review demos, spend, risks, and decisions with you. Customer feedback and adoption data guide what changes next."
+  ],
+  [
+    "What does engagement look like commercially?",
+    "A monthly retainer or a scoped initiative with milestones. We agree on responsibilities, budget, and review points up front, and make changes to scope or staffing explicit."
+  ]
+];
+
+function Chapter({ number, children }: { number?: string; children: React.ReactNode }) {
   return (
-    <div className="studio-heading max-w-2xl">
-      {eyebrow ? (
-        <div className="inline-flex items-center gap-2 text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-          <span className="h-px w-6 bg-gradient-to-r from-transparent via-muted-foreground to-transparent" />
-          {eyebrow}
+    <p className="e-chapter">
+      {number && <span>{number}</span>}
+      {children}
+    </p>
+  );
+}
+function DecisionRows({ items }: { items: { title: string; text: string }[] }) {
+  return (
+    <dl className="e-decisions">
+      {items.map((item, index) => (
+        <div key={item.title} className="e-decision">
+          <dt>
+            <span aria-hidden="true">0{index + 1}</span>
+            {item.title}
+          </dt>
+          <dd>{item.text}</dd>
         </div>
-      ) : null}
-      <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-        {title}
-      </h2>
-      {description ? (
-        <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-          {description}
-        </p>
-      ) : null}
-    </div>
+      ))}
+    </dl>
   );
 }
 
 export default function HomePage() {
-  const cardClassName =
-    "studio-card border-border/60 bg-card/90 text-card-foreground";
-
   return (
-    <div id="top" className="studio-home relative">
-      <StudioMotion />
-
-      {/* Hero */}
-      <section className="studio-hero relative">
-        <div className="container pb-12 pt-16 sm:pb-16 sm:pt-24">
-          <div className="grid items-center gap-12 lg:grid-cols-2">
-            <div>
-              <div className="flex flex-wrap items-center gap-2 rounded-full border border-muted/60 bg-background/80 px-3 py-2 shadow-sm">
-                <Badge>Startups</Badge>
-                <Badge>Enterprises</Badge>
-                <Badge variant="secondary">
-                  Product · Technology · Delivery
-                </Badge>
-              </div>
-
-              <h1 className="mt-8 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Clarity on what to build. A team to deliver.
+    <div id="top" className="editorial-home">
+      <EditorialMotion />
+      <section className="studio-hero editorial-hero" aria-labelledby="hero-title">
+        <div className="e-wrap">
+          <div className="e-masthead">
+            <span>Independent product &amp; technology studio</span>
+            <span>Direction. Decisions. Delivery.</span>
+          </div>
+          <div className="e-hero-layout">
+            <div className="e-hero-copy">
+              <h1 id="hero-title">
+                <span>Clarity on what to build.</span>
+                <span>A team to deliver.</span>
               </h1>
-
-              <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                We partner with founders and leadership teams to turn business
-                goals into a roadmap, a team, and working software. We lead
-                delivery and keep decisions, costs, and progress visible.
+              <p>
+                We partner with founders and leadership teams to turn business goals into a roadmap,
+                a team, and working software.
               </p>
-
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button asChild>
-                  <a
-                    href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
-                  >
-                    Start a conversation
-                  </a>
-                </Button>
-                <Button variant="outline" asChild>
-                  <Link href="#engagement">How we partner</Link>
-                </Button>
+              <p className="e-hero-secondary">
+                We lead delivery and keep decisions, costs, and progress visible.
+              </p>
+              <div className="e-actions">
+                <a
+                  className="e-button"
+                  href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
+                >
+                  Start a conversation <span aria-hidden="true">↗</span>
+                </a>
+                <SectionLink className="e-text-link" href="#approach">
+                  Explore our approach <span aria-hidden="true">↓</span>
+                </SectionLink>
               </div>
             </div>
-
-            <div className="flex min-w-0 justify-center lg:justify-end">
+            <div className="e-hero-art">
               <ProductStory />
             </div>
           </div>
-        </div>
-
-        <div className="container">
-          <Separator />
-        </div>
-      </section>
-
-      {/* Principles */}
-      <section id="approach" className="studio-principles section-invert bg-background text-foreground">
-        <div className="container py-16">
-          <SectionHeading
-            eyebrow="How we work"
-            title="Direction, decisions, and delivery—in one team."
-            description="Align the roadmap, budget, team, and architecture around what the business needs next."
-          />
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Start with the goal</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Agree on the problem and success measures before committing
-                  to a build.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Long-term direction, near-term priorities</li>
-                  <li>• Roadmap and milestones</li>
-                  <li>• Scope and budget tradeoffs</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Choose for context</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Fit the architecture to the work, budget, and team running it.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Build, buy, or integrate</li>
-                  <li>• Running cost and maintainability</li>
-                  <li>• Security and compliance needs</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Set the right pace</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Match the team and process to risk. Move fast where change
-                  is cheap.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Roles and decision owners</li>
-                  <li>• Review and release controls</li>
-                  <li>• Team practices and AI adoption</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Keep progress visible</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Own delivery commitments. Report spend and risks. Adapt as
-                  evidence changes.
-                </p>
-                <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Demos and agreed measures</li>
-                  <li>• Stakeholder decisions</li>
-                  <li>• Adoption and ownership</li>
-                </ul>
-              </CardContent>
-            </Card>
+          <div className="e-hero-foot">
+            <span>A shared direction. A product you own.</span>
+            <span aria-hidden="true">Scroll to explore ↓</span>
           </div>
         </div>
       </section>
 
-      {/* Startups */}
-      <section
-        id="startups"
-        className="scroll-mt-24 bg-background text-foreground"
-      >
-        <div className="container py-16">
-          <SectionHeading
-            eyebrow="Startups"
-            title="Make sense of the idea. Build what matters first."
-            description="Work through ambiguity together. Decide what to test, build, and defer, then turn that direction into a roadmap and working product."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>From open questions to a plan</CardTitle>
-                <CardDescription>
-                  Test the assumptions and set a practical first phase.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Customer problem, assumptions, and validation plan</li>
-                  <li>• Product vision, priorities, and first release</li>
-                  <li>• Budget, milestones, and explicit tradeoffs</li>
-                  <li>• Architecture that fits today and leaves room to grow</li>
-                  <li>• Roles to staff now and capabilities to add later</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>From plan to use</CardTitle>
-                <CardDescription>
-                  Stay close to the vision and the customer while we lead
-                  day-to-day delivery with you.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• UX, engineering, data, and quality in one team</li>
-                  <li>• Short releases and real user feedback</li>
-                  <li>• Clear progress, costs, and decisions to make</li>
-                  <li>• Launch readiness and customer success enablement</li>
-                  <li>• Hiring, onboarding, and ownership as you grow</li>
-                </ul>
-
-                <div className="mt-6 rounded-xl border border-muted/50 bg-muted/30 p-4">
-                  <div className="text-sm font-medium">
-                    Build your ability to own it
-                  </div>
-                  <p className="mt-2 text-sm text-muted-foreground">
-                    Decisions, code, and context stay accessible. We help your
-                    team take ownership or keep working alongside you.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Enterprises */}
-      <section
-        id="enterprises"
-        className="section-invert border-t border-border/60 bg-background text-foreground"
-      >
-        <div className="container scroll-mt-24 py-16">
-          <SectionHeading
-            eyebrow="Enterprises"
-            title="From leadership priority to daily use."
-            description="Translate a leadership priority into an executable plan. Align stakeholders, work with existing systems, and set a pace that fits the operational risk."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            <Card className={`${cardClassName} lg:col-span-2`}>
-              <CardHeader>
-                <CardTitle>The plan includes the organization</CardTitle>
-                <CardDescription>
-                  Technology, people, and adoption need to move together.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-                  <li>• Roadmap, budget, dependencies, and decision owners</li>
-                  <li>• Architecture and integration with existing systems</li>
-                  <li>• Security, compliance, and review requirements</li>
-                  <li>• Staffing and coordination across internal teams</li>
-                  <li>• Pilot, rollout, and team training</li>
-                  <li>• Progress, risks, and decisions reported to leadership</li>
-                </ul>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Common initiatives</CardTitle>
-                <CardDescription>
-                  New products, better operations, and systems ready for change.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {enterpriseCapabilities.map((c) => (
-                    <li key={c}>• {c}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Capabilities */}
-      <section
-        id="capabilities"
-        className="scroll-mt-24 bg-background text-foreground"
-      >
-        <div className="container py-16">
-          <SectionHeading
-            eyebrow="Capabilities"
-            title="Product, technology, and operations."
-            description="Bring the skills the work needs, with clear ownership as the team evolves."
-          />
-
-          <div className="mt-10 grid gap-6 md:grid-cols-2">
-            {coreDisciplines.map((d) => (
-              <Card key={d.title} className={cardClassName}>
-                <CardHeader>
-                  <CardTitle>{d.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {d.items.map((item) => (
-                      <li key={item}>• {item}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
+      <section id="clients" className="e-clients" aria-labelledby="clients-title">
+        <div className="e-wrap e-client-layout">
+          <h2 id="clients-title">
+            Teams we’ve
+            <br /> partnered with
+          </h2>
+          <div className="e-client-names">
+            {clientLinks.map((client) => (
+              <a key={client.name} href={client.href} target="_blank" rel="noreferrer">
+                {client.name}
+                <span aria-hidden="true">↗</span>
+              </a>
             ))}
           </div>
+          <p>
+            Other teams work in stealth.
+            <br />
+            References in conversation.
+          </p>
+        </div>
+      </section>
 
-          <div className="mt-10 rounded-2xl border border-muted/50 bg-gradient-to-br from-muted/40 via-background to-background p-6 shadow-sm">
-            <div className="text-sm font-medium">
-              AI changes the work. Judgment still matters.
+      <section id="approach" className="e-principles" aria-labelledby="approach-title">
+        <div className="e-wrap e-principle-layout">
+          <div className="e-principle-intro" data-editorial-reveal>
+            <Chapter number="01">How we work</Chapter>
+            <h2 id="approach-title">
+              Direction, decisions,
+              <br />
+              and delivery.
+              <br />
+              <span>One team.</span>
+            </h2>
+            <p>
+              Align the roadmap, budget, team, and architecture around what the business needs next.
+            </p>
+            <div className="e-small-rule" aria-hidden="true" />
+          </div>
+          <div className="e-principle-rows">
+            {principles.map((principle, index) => (
+              <article key={principle.title}>
+                <span className="e-principle-number" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <div>
+                  <h3>{principle.title}</h3>
+                  <p>{principle.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="startups" className="e-section e-startups" aria-labelledby="startups-title">
+        <div className="e-wrap">
+          <header className="e-section-heading" data-editorial-reveal>
+            <Chapter number="02">For startups</Chapter>
+            <h2 id="startups-title">
+              Make sense of the idea.
+              <br />
+              <span>Build what matters first.</span>
+            </h2>
+          </header>
+          <div className="e-startup-layout">
+            <div className="e-startup-copy">
+              <p className="e-lead">
+                Work through ambiguity together. Decide what to test, build, and defer—then turn
+                that direction into a working product.
+              </p>
+              <DecisionRows items={startupDecisions} />
             </div>
-            <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              Adopt AI and coding agents with clear architecture, review,
-              tests, and ownership. Faster code is one part of delivery; teams
-              and working practices need to evolve too.
+            <div className="e-startup-art">
+              <ProcessVignette kind="startup" />
+            </div>
+          </div>
+          <div className="e-continuity">
+            <span>Built for what comes next</span>
+            <p>
+              Hire, onboard, and grow with the product. Decisions, code, and context stay accessible
+              as your team takes ownership—or we keep working alongside you.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Engagement */}
       <section
-        id="engagement"
-        className="section-invert border-t border-border/60 bg-background text-foreground"
+        id="enterprises"
+        className="e-section e-enterprises"
+        aria-labelledby="enterprises-title"
       >
-        <div className="container scroll-mt-24 py-16">
-          <SectionHeading
-            eyebrow="Engagement"
-            title="Work with us at the level you need."
-            description="Start with an open question, a defined initiative, or an existing team. Agree on what we own."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-3">
-            {engagementModels.map((m) => (
-              <Card key={m.title} className={cardClassName}>
-                <CardHeader>
-                  <CardTitle>{m.title}</CardTitle>
-                  <CardDescription>{m.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-sm text-muted-foreground">
-                    {m.bullets.map((b) => (
-                      <li key={b}>• {b}</li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+        <div className="e-wrap">
+          <header className="e-split-heading" data-editorial-reveal>
+            <div>
+              <Chapter number="03">For enterprises</Chapter>
+              <h2 id="enterprises-title">
+                From leadership priority
+                <br />
+                <span>to daily use.</span>
+              </h2>
+            </div>
+            <p className="e-lead">
+              Translate a leadership priority into an executable plan. Align stakeholders, work with
+              existing systems, and set a pace that fits the operational risk.
+            </p>
+          </header>
+          <div className="e-enterprise-layout">
+            <div className="e-enterprise-art">
+              <ProcessVignette kind="enterprise" />
+            </div>
+            <DecisionRows items={enterpriseDecisions} />
           </div>
-        </div>
-      </section>
-
-      {/* Clients */}
-      <section
-        id="clients"
-        className="scroll-mt-24 bg-background text-foreground"
-      >
-        <div className="container py-16">
-          <SectionHeading
-            eyebrow="Clients"
-            title="Teams we’ve partnered with."
-          />
-
-          <div className="studio-clients mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {clientLinks.map((c) => (
-              <a
-                key={c.href}
-                href={c.href}
-                target="_blank"
-                rel="noreferrer"
-                className="group rounded-2xl border border-muted/60 bg-background/70 p-6 shadow-sm transition duration-300 hover:-translate-y-1 hover:bg-muted/30 hover:shadow-lg"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="text-sm font-semibold tracking-tight">
-                    {c.name}
-                  </div>
-                  <div className="text-xs text-muted-foreground group-hover:text-foreground">
-                    ↗
-                  </div>
-                </div>
-                <div className="mt-3 text-xs text-muted-foreground">
-                  {c.href
-                    .replace("https://", "")
-                    .replace("www.", "")
-                    .replace(/\/$/, "")}
-                </div>
-              </a>
-            ))}
-
-            <div className="rounded-2xl border border-muted/50 bg-muted/20 p-6 shadow-sm">
-              <div className="text-sm font-semibold tracking-tight">
-                {stealthNote}
-              </div>
-              <p className="mt-3 text-xs leading-relaxed text-muted-foreground">
-                We can share additional references in conversation when it’s
-                appropriate.
-              </p>
+          <div className="e-initiatives">
+            <h3>Common initiatives</h3>
+            <div>
+              {enterpriseCapabilities.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section id="questions" className="studio-questions section-invert border-t border-border/60 bg-background text-foreground">
-        <div className="container py-16">
-          <SectionHeading eyebrow="FAQ" title="A few practical questions." />
+      <section
+        id="capabilities"
+        className="e-section e-capabilities"
+        aria-labelledby="capabilities-title"
+      >
+        <div className="e-wrap">
+          <header className="e-split-heading" data-editorial-reveal>
+            <div>
+              <Chapter number="04">Our capabilities</Chapter>
+              <h2 id="capabilities-title">
+                Judgment across
+                <br />
+                <span>the whole product.</span>
+              </h2>
+            </div>
+            <p className="e-lead">
+              Product, technology, and operations. Bring the skills the work needs, with clear
+              ownership as the team evolves.
+            </p>
+          </header>
+          <div className="e-capability-index">
+            {coreDisciplines.map((discipline, index) => (
+              <article className="e-capability-row" key={discipline.title}>
+                <span className="e-row-index" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <div className="e-capability-title">
+                  <h3>{discipline.title}</h3>
+                  <p>{capabilityQuestions[index]}</p>
+                </div>
+                <div className="e-capability-detail">
+                  {discipline.items.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+          <aside className="e-ai-note">
+            <span className="e-chapter">AI &amp; the team</span>
+            <div>
+              <h3>AI changes the work. Judgment still matters.</h3>
+              <p>
+                Adopt AI and coding agents with clear architecture, review, tests, and ownership.
+                Faster code is one part of delivery; teams and working practices need to evolve too.
+              </p>
+            </div>
+          </aside>
+        </div>
+      </section>
 
-          <div className="studio-faq mt-10 max-w-3xl">
-            <Accordion type="single" collapsible>
-              <AccordionItem value="item-1">
-                <AccordionTrigger>How do we start?</AccordionTrigger>
-                <AccordionContent>
-                  We start with the business goal and constraints, then propose a
-                  first phase with priorities, budget, team shape, and decision
-                  points.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>
-                  Can you work with our team and help it grow?
-                </AccordionTrigger>
-                <AccordionContent>
-                  Yes. We embed or lead an initiative alongside your team. We can
-                  also shape roles, assess technical hires, and onboard people.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-3">
-                <AccordionTrigger>How do you handle handoff?</AccordionTrigger>
-                <AccordionContent>
-                  We document decisions, keep code maintainable, and build runbooks
-                  as we go. Walkthroughs and a planned transition give your team
-                  the context to operate and extend the product.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-4">
-                <AccordionTrigger>
-                  How do you stay accountable?
-                </AccordionTrigger>
-                <AccordionContent>
-                  We agree on delivery commitments and success measures, then
-                  review demos, spend, risks, and decisions with you. Customer
-                  feedback and adoption data guide what changes next.
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-5">
-                <AccordionTrigger>
-                  What does engagement look like commercially?
-                </AccordionTrigger>
-                <AccordionContent>
-                  A monthly retainer or a scoped initiative with milestones.
-                  We agree on responsibilities, budget, and review points up
-                  front, and make changes to scope or staffing explicit.
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+      <section className="e-ownership" aria-labelledby="ownership-title">
+        <div className="e-wrap e-ownership-layout">
+          <div className="e-ownership-copy" data-editorial-reveal>
+            <Chapter>Built together. Yours to build on.</Chapter>
+            <h2 id="ownership-title">
+              The work stays.
+              <br />
+              <span>So does the context.</span>
+            </h2>
+            <p>
+              Decisions, code, and documentation stay accessible. We build runbooks as we go, then
+              prepare your team to operate and extend the product.
+            </p>
+            <p>
+              Continue together, or make a planned transition. Ownership should never be an
+              afterthought.
+            </p>
+          </div>
+          <div className="e-ownership-art">
+            <ProcessVignette kind="ownership" />
           </div>
         </div>
       </section>
 
-      {/* Contact */}
       <section
-        id="contact"
-        className="border-t border-border/60 bg-background text-foreground"
+        id="engagement"
+        className="e-section e-engagement"
+        aria-labelledby="engagement-title"
       >
-        <div className="container scroll-mt-24 py-16">
-          <SectionHeading
-            eyebrow="Contact"
-            title="What are you trying to achieve?"
-            description="Bring the goal, the constraints, and the questions you haven’t resolved. You don’t need a finished brief."
-          />
-
-          <div className="mt-10 grid gap-6 lg:grid-cols-2">
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Email</CardTitle>
-                <CardDescription>
-                  A short note is enough to start.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild>
-                  <a
-                    href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
-                  >
-                    {site.email}
-                  </a>
-                </Button>
-
-                <div className="mt-6 rounded-xl border border-muted/50 bg-muted/20 p-4">
-                  <div className="text-sm font-medium">What to include</div>
-                  <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
-                    <li>• The goal and where things stand</li>
-                    <li>• Your team, budget, and timing</li>
-                    <li>• The decisions or delivery you need help with</li>
-                  </ul>
+        <div className="e-wrap">
+          <header className="e-split-heading" data-editorial-reveal>
+            <div>
+              <Chapter number="05">Ways to work together</Chapter>
+              <h2 id="engagement-title">
+                A partner at the
+                <br />
+                <span>level you need.</span>
+              </h2>
+            </div>
+            <p className="e-lead">
+              Start with an open question, a defined initiative, or an existing team. Agree on what
+              we own.
+            </p>
+          </header>
+          <div className="e-engagement-index">
+            {engagementModels.map((model, index) => (
+              <article key={model.title} className="e-engagement-row">
+                <div>
+                  <span className="e-row-index">0{index + 1}</span>
+                  <h3>{model.title}</h3>
+                  <p className="e-engagement-fit">{engagementFit[index]}</p>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className={cardClassName}>
-              <CardHeader>
-                <CardTitle>Address</CardTitle>
-                <CardDescription>
-                  Administrative address (remote delivery is typical).
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="grid gap-6 sm:grid-cols-2">
-                  <div className="text-sm text-muted-foreground">
-                    <div className="mb-2 text-xs font-medium text-muted-foreground">
-                      India Address
-                    </div>
-                    {site.indiaAddressLines.map((line) => (
-                      <div key={`in-${line}`}>{line}</div>
-                    ))}
-                  </div>
-
-                  <div className="text-sm text-muted-foreground">
-                    <div className="mb-2 text-xs font-medium text-muted-foreground">
-                      US Address
-                    </div>
-                    {site.USaddressLines.map((line) => (
-                      <div key={`us-${line}`}>{line}</div>
-                    ))}
-                  </div>
+                <p className="e-engagement-description">{model.description}</p>
+                <div className="e-engagement-detail">
+                  {model.bullets.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
                 </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <div className="mt-6 rounded-xl border border-muted/50 bg-muted/20 p-4">
-                  <div className="text-sm font-medium">Working style</div>
-                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Clear owners. Visible decisions. Regular reviews. Enough
-                    structure for the risk and complexity of the work.
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+      <section id="questions" className="e-questions" aria-labelledby="questions-title">
+        <div className="e-wrap e-question-layout">
+          <div>
+            <Chapter>Before we begin</Chapter>
+            <h2 id="questions-title">
+              A few practical
+              <br />
+              questions.
+            </h2>
+          </div>
+          <Accordion type="single" collapsible className="e-faq">
+            {questions.map(([question, answer], index) => (
+              <AccordionItem key={question} value={`question-${index}`}>
+                <AccordionTrigger>{question}</AccordionTrigger>
+                <AccordionContent>{answer}</AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
+      <section id="contact" className="e-contact" aria-labelledby="contact-title">
+        <div className="e-wrap">
+          <Chapter number="06">Start a conversation</Chapter>
+          <h2 id="contact-title" data-editorial-reveal>
+            What are you trying
+            <br />
+            <span>to achieve?</span>
+          </h2>
+          <div className="e-contact-bottom">
+            <div>
+              <p>
+                Bring the goal, the constraints, and the questions you haven’t resolved. You don’t
+                need a finished brief.
+              </p>
+              <a
+                className="e-contact-email"
+                href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
+              >
+                {site.email}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div className="e-contact-prompts">
+              <span>A short note is enough</span>
+              <p>The goal and where things stand</p>
+              <p>Your team, budget, and timing</p>
+              <p>The decisions you need help with</p>
+            </div>
           </div>
         </div>
       </section>
