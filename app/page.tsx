@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SectionLink as Link } from "@/components/studio-navigation";
 
 import {
   clientLinks,
