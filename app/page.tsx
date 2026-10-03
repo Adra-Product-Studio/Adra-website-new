@@ -74,7 +74,8 @@ export default function HomePage() {
               </div>
 
               <h1 className="mt-8 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                Clarity on what to build. A team to deliver.
+                <span className="block">Clarity on what to build.</span>{" "}
+                <span className="block">A team to deliver.</span>
               </h1>
 
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">

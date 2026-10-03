@@ -9,6 +9,20 @@ export function StudioMotion() {
     if (!root) return;
     const preference = window.matchMedia("(prefers-reduced-motion: reduce)");
     const animations = new Set<Animation>();
+    const enter = (element: HTMLElement, delay = 0, distance = 8) => {
+      if (preference.matches || typeof element.animate !== "function") return;
+      const animation = element.animate([
+        { opacity: 0, transform: `translateY(${distance}px)` },
+        { opacity: 1, transform: "translateY(0)" }
+      ], { duration: 440, delay, easing: "cubic-bezier(.22,.7,.2,1)", fill: "backwards" });
+      animations.add(animation);
+      const release = () => animations.delete(animation);
+      animation.onfinish = release;
+      animation.oncancel = release;
+    };
+    // Introduce the copy once; the illustrated story keeps the visual emphasis.
+    root.querySelectorAll<HTMLElement>(".studio-hero .grid > div:first-child > *")
+      .forEach((element, index) => enter(element, index * 40, 6));
     const targets = root.querySelectorAll<HTMLElement>(".studio-heading, .studio-card, .studio-clients > *, .studio-faq");
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -18,18 +32,21 @@ export function StudioMotion() {
         observer.unobserve(element);
         if (preference.matches) return;
         const siblings = element.parentElement ? Array.from(element.parentElement.children) : [];
-        const delay = element.classList.contains("studio-card") ? Math.min(siblings.indexOf(element), 3) * 65 : 0;
-        const animation = element.animate([
-          { opacity: 0, transform: "translateY(18px)" },
-          { opacity: 1, transform: "translateY(0)" }
-        ], { duration: 560, delay, easing: "cubic-bezier(.22,.7,.2,1)", fill: "backwards" });
-        animations.add(animation);
-        animation.onfinish = () => animations.delete(animation);
+        const sameRow = siblings.filter(sibling => Math.abs(sibling.getBoundingClientRect().top - element.getBoundingClientRect().top) < 20);
+        const delay = Math.min(Math.max(sameRow.indexOf(element), 0), 3) * 35;
+        enter(element, delay, element.classList.contains("studio-faq") ? 0 : 8);
       });
     }, { threshold: .08, rootMargin: "0px 0px -24px 0px" });
     targets.forEach(target => observer.observe(target));
     const stopMotion = () => { if (preference.matches) animations.forEach(animation => animation.cancel()); };
     preference.addEventListener("change", stopMotion);
+    const revealFocused = (event: FocusEvent) => {
+      animations.forEach(animation => {
+        const effect = animation.effect as KeyframeEffect | null;
+        if (effect?.target?.contains(event.target as Node)) animation.cancel();
+      });
+    };
+    root.addEventListener("focusin", revealFocused);
 
     // Native scrolling, with a quiet reading indicator and section location.
     const header = document.querySelector<HTMLElement>(".studio-header");
@@ -53,6 +70,7 @@ export function StudioMotion() {
     updatePosition();
     return () => {
       observer.disconnect();
+      root.removeEventListener("focusin", revealFocused);
       animations.forEach(animation => animation.cancel());
       preference.removeEventListener("change", stopMotion);
       removeEventListener("scroll", scheduleUpdate);

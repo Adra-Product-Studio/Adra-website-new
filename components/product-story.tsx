@@ -196,6 +196,8 @@ export function ProductStory() {
   const [finished, setFinished] = useState(false);
   const [visible, setVisible] = useState(true);
   const [pageVisible, setPageVisible] = useState(true);
+  const [hovered, setHovered] = useState(false);
+  const [artworkPaused, setArtworkPaused] = useState(false);
   const figureRef = useRef<HTMLElement>(null);
   const progressRef = useRef<HTMLSpanElement>(null);
   const elapsedRef = useRef(0);
@@ -219,7 +221,7 @@ export function ProductStory() {
 
   useEffect(() => {
     if (progressRef.current) progressRef.current.style.transform = `scaleX(${elapsedRef.current / STAGE_DURATION})`;
-    if (!playing || !visible || !pageVisible) return;
+    if (!playing || hovered || !visible || !pageVisible) return;
     let frame: number;
     let previous: number | undefined;
     const tick = (time: number) => {
@@ -241,17 +243,20 @@ export function ProductStory() {
     };
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [active, playing, visible, pageVisible]);
+  }, [active, playing, hovered, visible, pageVisible]);
 
   const selectStage = (id: string) => {
     elapsedRef.current = 0;
     setActive(stages.findIndex(stage => stage.id === id));
     setPlaying(false);
     setFinished(false);
+    setArtworkPaused(false);
     if (progressRef.current) progressRef.current.style.transform = "scaleX(0)";
   };
 
   const togglePlayback = () => {
+    setArtworkPaused(playing && !finished);
+    if (!playing) setHovered(false);
     if (finished) {
       elapsedRef.current = 0;
       setActive(0);
@@ -261,7 +266,22 @@ export function ProductStory() {
   };
 
   return (
-    <figure ref={figureRef} className={styles.story} aria-label="How Adra turns business goals into a product">
+    <figure
+      ref={figureRef}
+      className={styles.story}
+      data-artwork-paused={artworkPaused || !visible || !pageVisible || (playing && hovered)}
+      aria-label="How Adra turns business goals into a product"
+      onPointerEnter={event => { if (event.pointerType === "mouse") setHovered(true); }}
+      onPointerLeave={() => setHovered(false)}
+      onFocusCapture={event => {
+        // Keyboard readers keep control of the chapter they are inspecting.
+        // A pointer press on Pause must not turn into an unintended Play.
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null) && event.target.matches(":focus-visible")) {
+          setPlaying(false);
+          setArtworkPaused(true);
+        }
+      }}
+    >
       <figcaption className={styles.header}>
         <div className={styles.topline}>
           <p className={styles.eyebrow}><span aria-hidden="true" />Adra, in the making</p>
