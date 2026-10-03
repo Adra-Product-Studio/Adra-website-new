@@ -1,111 +1,113 @@
-import Link from "next/link";
+import Image from "next/image";
 import { Menu } from "lucide-react";
-
-import { navItems, site } from "@/lib/site-content";
-import { cn } from "@/lib/utils";
-
+import { SectionLink } from "@/components/studio-navigation";
 import { ModeToggle } from "@/components/mode-toggle";
 import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetTitle, SheetDescription } from "@/components/ui/sheet";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+  SheetClose,
+  SheetTitle,
+  SheetDescription
+} from "@/components/ui/sheet";
+import { site } from "@/lib/site-content";
 
+const chapters = [
+  { number: "01", label: "Approach", href: "#approach" },
+  { number: "02", label: "Startups", href: "#startups" },
+  { number: "03", label: "Enterprises", href: "#enterprises" },
+  { number: "04", label: "Capabilities", href: "#capabilities" },
+  { number: "05", label: "Engagement", href: "#engagement" }
+];
 function Logo() {
   return (
-    <div className="flex items-center gap-2">
-      {/* <div className="relative flex h-8 w-8 items-center justify-center  border bg-background"> */}
-      {/* <span className="text-sm font-semibold tracking-tight">A</span> */}
-
-      {/* Light theme logo */}
+    <>
       <Image
         src="/images/adra_logo_dark.png"
         width={70}
-        height={10}
+        height={48}
         alt="Adra Product Studio"
         className="dark:hidden h-auto w-[70px]"
       />
-
-      {/* Dark theme logo */}
       <Image
         src="/images/adra_logo_light.png"
-        alt="Adra Product Studio"
         width={70}
-        height={10}
+        height={48}
+        alt="Adra Product Studio"
         className="hidden dark:block h-auto w-[70px]"
       />
-      {/* </div> */}
-      {/* <span className="text-sm font-semibold tracking-tight">
-        Adra Product Studio
-      </span> */}
-    </div>
+    </>
   );
 }
-
 export function SiteHeader() {
   return (
-    <header className="studio-header sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-20 items-center justify-between">
-        <Link href="#top" className="hover:opacity-90">
+    <header className="studio-header e-header sticky top-0 z-50 w-full border-b">
+      <div className="e-wrap e-header-inner">
+        <SectionLink className="e-brand" href="#top">
           <Logo />
-        </Link>
-
-        {/* Desktop nav */}
-        <nav aria-label="Main navigation" className="hidden items-center gap-6 lg:flex">
-          {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className={cn(
-                "text-sm text-muted-foreground transition-colors hover:text-foreground",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm"
-              )}
-            >
-              {item.label}
-            </a>
+        </SectionLink>
+        <nav aria-label="Main navigation" className="e-desktop-index hidden lg:flex">
+          <span className="e-index-rule" aria-hidden="true" />
+          {chapters.map((chapter) => (
+            <SectionLink key={chapter.href} href={chapter.href}>
+              <span className="e-nav-number" aria-hidden="true">
+                {chapter.number}
+              </span>
+              <span>{chapter.label}</span>
+            </SectionLink>
           ))}
         </nav>
-
-        <div className="flex items-center gap-2">
+        <div className="e-header-actions">
           <ModeToggle />
-
-          <Button asChild className="hidden lg:inline-flex">
-            <a href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}>Contact</a>
-          </Button>
-
-          {/* Mobile */}
+          <a
+            className="e-header-contact hidden lg:inline-flex"
+            href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}
+          >
+            Let’s talk <span aria-hidden="true">↗</span>
+          </a>
           <div className="lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="icon" aria-label="Open menu">
+                <Button variant="ghost" className="e-menu-trigger" aria-label="Open menu">
+                  <span>Index</span>
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[320px] max-w-full">
-                <SheetTitle className="sr-only">Site navigation</SheetTitle>
-                <SheetDescription className="sr-only">Explore Adra Product Studio.</SheetDescription>
-                <div className="flex items-center justify-between">
-                  <Link href="#top" className="hover:opacity-90">
+              <SheetContent side="right" className="studio-menu e-contents w-[430px] max-w-full">
+                <SheetClose asChild>
+                  <SectionLink className="e-brand" href="#top">
                     <Logo />
-                  </Link>
+                  </SectionLink>
+                </SheetClose>
+                <div className="e-contents-intro">
+                  <SheetTitle>Inside the studio</SheetTitle>
+                  <SheetDescription>A shared direction. A product you own.</SheetDescription>
                 </div>
-
-                <div className="mt-8 flex flex-col gap-4">
-                  {navItems.map((item) => (
-                    <SheetClose asChild key={item.href}>
-                      <a href={item.href} className="py-2 text-sm text-muted-foreground hover:text-foreground">
-                        {item.label}
-                      </a>
-                    </SheetClose>
-                  ))}
-                </div>
-
-                <div className="mt-8">
-                  <Button asChild className="w-full">
-                    <a href={`mailto:${site.email}?subject=Adra%20Product%20Studio%20%E2%80%94%20Intro`}>Contact</a>
-                  </Button>
-                  <p className="mt-3 text-xs text-muted-foreground">
-                    Email is the fastest way to reach us.
-                  </p>
-                </div>
+                <nav aria-label="Mobile navigation">
+                  {[...chapters, { number: "06", label: "Contact", href: "#contact" }].map(
+                    (chapter) => (
+                      <SheetClose asChild key={chapter.href}>
+                        <SectionLink href={chapter.href}>
+                          <span className="e-mobile-number" aria-hidden="true">
+                            {chapter.number}
+                          </span>
+                          <span>{chapter.label}</span>
+                          <span className="e-mobile-arrow" aria-hidden="true">
+                            ↗
+                          </span>
+                        </SectionLink>
+                      </SheetClose>
+                    )
+                  )}
+                </nav>
+                <p className="e-contents-note">
+                  Product direction.
+                  <br />
+                  Technical judgment.
+                  <br />
+                  Delivery.
+                </p>
               </SheetContent>
             </Sheet>
           </div>

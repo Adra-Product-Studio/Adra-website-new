@@ -5,6 +5,7 @@ import * as SheetPrimitive from "@radix-ui/react-dialog";
 import { cva, type VariantProps } from "class-variance-authority";
 import { X } from "lucide-react";
 
+import { completeMenuNavigation } from "@/lib/section-navigation";
 import { cn } from "@/lib/utils";
 
 const Sheet = SheetPrimitive.Root;
@@ -20,6 +21,7 @@ const SheetOverlay = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof SheetPrimitive.Overlay>
 >(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
+    data-studio-overlay=""
     className={cn(
       "fixed inset-0 z-50 bg-black/40 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
@@ -57,10 +59,15 @@ interface SheetContentProps
 const SheetContent = React.forwardRef<
   React.ElementRef<typeof SheetPrimitive.Content>,
   SheetContentProps
->(({ side = "right", className, children, ...props }, ref) => (
+>(({ side = "right", className, children, onCloseAutoFocus, ...props }, ref) => (
   <SheetPortal>
     <SheetOverlay />
     <SheetPrimitive.Content
+      data-studio-sheet=""
+      onCloseAutoFocus={event => {
+        onCloseAutoFocus?.(event);
+        if (!event.defaultPrevented) completeMenuNavigation(event);
+      }}
       ref={ref}
       className={cn(sheetVariants({ side }), className)}
       {...props}

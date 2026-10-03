@@ -1,0 +1,660 @@
+.figure {
+  --v-paper: hsl(var(--background));
+  --v-ink: hsl(var(--foreground));
+  --v-secondary: hsl(var(--foreground) / 0.66);
+  --v-line: hsl(var(--foreground) / 0.17);
+  --v-wash: hsl(var(--foreground) / 0.035);
+  width: 100%;
+  margin: 0;
+  color: var(--v-ink);
+  container-type: inline-size;
+}
+.artworkWrap {
+  width: 100%;
+  overflow: hidden;
+}
+.artwork {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: inherit;
+}
+.mobileArtwork {
+  display: none;
+}
+.artwork text {
+  text-rendering: geometricPrecision;
+}
+.hairline {
+  fill: none;
+  stroke: var(--v-line);
+  stroke-width: 1;
+}
+.fineInk {
+  fill: none;
+  stroke: var(--v-secondary);
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.inkFill {
+  fill: var(--v-ink);
+}
+.paper {
+  fill: var(--v-paper);
+  stroke: hsl(var(--foreground) / 0.28);
+  stroke-width: 1;
+}
+.backPaper {
+  fill: var(--v-wash);
+  stroke: var(--v-line);
+  stroke-width: 1;
+}
+.fold {
+  fill: var(--v-wash);
+  stroke: var(--v-line);
+  stroke-width: 1;
+}
+.slip {
+  fill: var(--v-paper);
+  stroke: var(--v-line);
+  stroke-width: 1;
+}
+.recordSlip {
+  fill: var(--v-paper);
+  stroke: var(--v-line);
+  stroke-width: 0.75;
+}
+.deferredPaper {
+  fill: var(--v-wash);
+  stroke: var(--v-line);
+  stroke-width: 1;
+}
+.darkPaper {
+  fill: var(--v-ink);
+}
+.overline {
+  fill: var(--v-secondary);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+}
+.micro {
+  fill: var(--v-secondary);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+.paperHeading {
+  fill: var(--v-ink);
+  font-size: 15px;
+  font-weight: 550;
+  letter-spacing: -0.3px;
+}
+.label {
+  fill: var(--v-ink);
+  font-size: 13px;
+  font-weight: 450;
+}
+.rowTitle {
+  fill: var(--v-ink);
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+.annotation,
+.recordNote,
+.coreJourney {
+  fill: var(--v-secondary);
+  font-size: 11px;
+  font-weight: 400;
+}
+.step {
+  fill: var(--v-secondary);
+  font-size: 10px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+.laneLabel {
+  fill: var(--v-ink);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+}
+.inverseMicro {
+  fill: var(--v-paper);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+}
+.inverseLabel {
+  fill: var(--v-paper);
+  font-size: 12px;
+  font-weight: 450;
+}
+.mobileHeading {
+  fill: var(--v-ink);
+  font-size: 19px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+}
+.mobileLabel {
+  fill: var(--v-ink);
+  font-size: 16px;
+  font-weight: 450;
+}
+.mobileNote {
+  fill: var(--v-secondary);
+  font-size: 15.5px;
+  font-weight: 400;
+}
+.mobileMicro {
+  fill: var(--v-secondary);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+.mobileNumber {
+  fill: var(--v-secondary);
+  font-size: 12px;
+  font-weight: 500;
+}
+.mobileInverse {
+  fill: var(--v-paper);
+  font-size: 14px;
+  font-weight: 450;
+}
+.caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+  margin: 0 4.65%;
+  padding-top: 13px;
+  border-top: 1px solid var(--v-line);
+}
+.captionIndex {
+  display: block;
+  font-size: 11px;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+  color: hsl(var(--muted-foreground));
+}
+.captionTitle {
+  max-width: 42ch;
+  margin: 5px 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+.playback {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 6px;
+  min-width: 72px;
+  min-height: 44px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: hsl(var(--muted-foreground));
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: color 160ms ease;
+}
+.playback svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.playback:hover {
+  color: var(--v-ink);
+}
+.playback:focus-visible {
+  outline: 2px solid var(--v-ink);
+  outline-offset: 2px;
+}
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* One four-second sequence. All unanimated styles describe the useful final record. */
+.figure[data-animate="true"]
+  .artwork
+  :is(
+    .briefSheet,
+    .question,
+    .planHeading,
+    .planRow,
+    .coreJourney,
+    .deferredItem,
+    .recordFooter,
+    .workstream,
+    .reviewBracket,
+    .reviewSheet,
+    .reviewDecision,
+    .folioSheet,
+    .ownershipRecord,
+    .ownerTab
+  ) {
+  animation-duration: 4s;
+  animation-timing-function: cubic-bezier(0.22, 0.68, 0.2, 1);
+  animation-fill-mode: both;
+  animation-play-state: var(--v-play-state, paused);
+  transform-box: view-box;
+  transform-origin: center;
+}
+.figure[data-running="true"] {
+  --v-play-state: running;
+}
+.figure[data-animate="true"] .briefSheet {
+  animation-name: brief-settle;
+}
+.figure[data-animate="true"] .customerQuestion {
+  animation-name: customer-settle;
+}
+.figure[data-animate="true"] .scopeQuestion {
+  animation-name: scope-settle;
+}
+.figure[data-animate="true"] .constraintQuestion {
+  animation-name: constraint-settle;
+}
+.figure[data-animate="true"] .planHeading {
+  animation-name: plan-heading;
+}
+.figure[data-animate="true"] .testRow {
+  animation-name: test-enter;
+}
+.figure[data-animate="true"] .releaseRow {
+  animation-name: release-enter;
+}
+.figure[data-animate="true"] .laterRow {
+  animation-name: later-enter;
+}
+.figure[data-animate="true"] .coreJourney {
+  animation-name: core-enter;
+}
+.figure[data-animate="true"] .deferredItem {
+  animation-name: defer-scope;
+}
+.figure[data-animate="true"] .recordFooter {
+  animation-name: footer-enter;
+}
+.figure[data-animate="true"] .productStream {
+  animation-name: product-align;
+}
+.figure[data-animate="true"] .technologyStream {
+  animation-name: technology-align;
+}
+.figure[data-animate="true"] .operationsStream {
+  animation-name: operations-align;
+}
+.figure[data-animate="true"] .reviewBracket {
+  animation-name: bracket-enter;
+}
+.figure[data-animate="true"] .reviewSheet {
+  animation-name: review-open;
+}
+.figure[data-animate="true"] .reviewDecision {
+  animation-name: decision-enter;
+}
+.figure[data-animate="true"] .folioSheet {
+  animation-name: folio-open;
+}
+.figure[data-animate="true"] .codeRecord {
+  animation-name: code-file;
+}
+.figure[data-animate="true"] .decisionRecord {
+  animation-name: decision-file;
+}
+.figure[data-animate="true"] .runbookRecord {
+  animation-name: runbook-file;
+}
+.figure[data-animate="true"] .teamRecord {
+  animation-name: team-file;
+}
+.figure[data-animate="true"] .ownerTab {
+  animation-name: owner-enter;
+}
+
+@keyframes brief-settle {
+  0% {
+    opacity: 0.4;
+    transform: translateY(9px);
+  }
+  24%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes customer-settle {
+  0% {
+    transform: translate(-18px, -22px) rotate(-3deg);
+  }
+  27%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes scope-settle {
+  0%,
+  5% {
+    transform: translate(25px, -11px) rotate(2deg);
+  }
+  34%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes constraint-settle {
+  0%,
+  10% {
+    transform: translate(-12px, 18px) rotate(-2deg);
+  }
+  41%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes plan-heading {
+  0%,
+  20% {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  43%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes test-enter {
+  0%,
+  26% {
+    opacity: 0;
+    transform: translateX(-17px);
+  }
+  49%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes release-enter {
+  0%,
+  32% {
+    opacity: 0;
+    transform: translateX(-17px);
+  }
+  55%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes later-enter {
+  0%,
+  43% {
+    opacity: 0;
+    transform: translateX(-17px);
+  }
+  67%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes core-enter {
+  0%,
+  62% {
+    opacity: 0;
+  }
+  84%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes defer-scope {
+  0%,
+  33% {
+    opacity: 0;
+    transform: translate(-60px, -44px);
+  }
+  49%,
+  55% {
+    opacity: 1;
+    transform: translate(-60px, -44px);
+  }
+  84%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes footer-enter {
+  0%,
+  69% {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes product-align {
+  0%,
+  5% {
+    transform: translate(-15px, -10px) rotate(-2deg);
+  }
+  38%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes technology-align {
+  0%,
+  10% {
+    transform: translate(3px, 4px);
+  }
+  45%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes operations-align {
+  0%,
+  16% {
+    transform: translate(-31px, 9px) rotate(2deg);
+  }
+  51%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes bracket-enter {
+  0%,
+  34% {
+    opacity: 0;
+  }
+  57%,
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes review-open {
+  0%,
+  39% {
+    opacity: 0;
+    transform: translate(17px, 4px);
+  }
+  67%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes decision-enter {
+  0%,
+  67% {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  92%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes folio-open {
+  0% {
+    opacity: 0.2;
+    transform: translate(7px, 12px);
+  }
+  37%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes code-file {
+  0%,
+  2% {
+    transform: translate(-64px, -16px) rotate(-4deg);
+  }
+  40%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes decision-file {
+  0%,
+  7% {
+    transform: translate(46px, -11px) rotate(3deg);
+  }
+  48%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes runbook-file {
+  0%,
+  13% {
+    transform: translate(-48px, 12px) rotate(-2deg);
+  }
+  56%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes team-file {
+  0%,
+  19% {
+    transform: translate(38px, 22px) rotate(3deg);
+  }
+  64%,
+  100% {
+    transform: none;
+  }
+}
+@keyframes owner-enter {
+  0%,
+  63% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  88%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .desktopArtwork {
+    display: none;
+  }
+  .mobileArtwork {
+    display: block;
+  }
+  .caption {
+    align-items: flex-start;
+    gap: 8px;
+    padding-top: 11px;
+  }
+  .captionTitle {
+    font-size: 14px;
+  }
+  .captionIndex {
+    font-size: 10px;
+  }
+  .playback {
+    min-width: 62px;
+    margin-top: 3px;
+    font-size: 11px;
+  }
+  .mobileArtwork .coreJourney {
+    font-size: 15.5px;
+  }
+  .figure[data-animate="true"] .mobileDeferred {
+    animation-name: mobile-defer-scope;
+  }
+}
+@keyframes mobile-defer-scope {
+  0%,
+  33% {
+    opacity: 0;
+    transform: translate(-120px, -44px);
+  }
+  49%,
+  55% {
+    opacity: 1;
+    transform: translate(-120px, -44px);
+  }
+  84%,
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@container (max-width: 440px) {
+  .desktopArtwork {
+    display: none;
+  }
+  .mobileArtwork {
+    display: block;
+  }
+  .mobileArtwork .coreJourney {
+    font-size: 15.5px;
+  }
+  .figure[data-animate="true"] .mobileDeferred {
+    animation-name: mobile-defer-scope;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .figure .artwork * {
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .playback {
+    display: none;
+    transition: none;
+  }
+}
