@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
@@ -36,11 +37,14 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  // Request-bound rendering is required: never cache HTML with a reused CSP nonce.
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${plusJakartaSans.className} studio-shell editorial-shell`}>
         <ThemeProvider
+          nonce={nonce}
           attribute="class"
           defaultTheme="light"
           enableSystem

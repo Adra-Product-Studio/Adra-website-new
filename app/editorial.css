@@ -193,6 +193,8 @@
   margin-top: 10px;
   color: hsl(var(--muted-foreground));
   font-size: 12px;
+  /* Preserve the sheet description's leading across Tailwind cascade layers. */
+  line-height: 1.25rem;
 }
 .editorial-shell .e-contents nav {
   display: block;
