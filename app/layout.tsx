@@ -6,6 +6,7 @@ import "./studio.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteFooter } from "@/components/site-footer";
+import { StudioNavigation } from "@/components/studio-navigation";
 import { SiteHeader } from "@/components/site-header";
 
 const plusJakartaSans = Plus_Jakarta_Sans({ subsets: ["latin"], display: "swap" });
@@ -47,6 +48,7 @@ export default function RootLayout({
         >
           <div className="min-h-screen bg-background">
             <a href="#main-content" className="studio-skip">Skip to content</a>
+            <StudioNavigation />
             <SiteHeader />
             <main id="main-content" className="relative">{children}</main>
             <SiteFooter />

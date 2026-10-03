@@ -1,0 +1,31 @@
+/* Navigation has a shorter rhythm than storytelling. No page-wide fades. */
+.studio-shell :target { scroll-margin-top: 108px; }
+.studio-shell [data-navigation-focus]:focus { outline: none; }
+.studio-shell [data-navigation-focus="keyboard"]:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 7px;
+  border-radius: 2px;
+}
+.studio-shell [data-studio-sheet][data-state="open"] {
+  animation: studio-menu-arrive 240ms cubic-bezier(.22,.7,.2,1) both !important;
+}
+.studio-shell [data-studio-sheet][data-state="closed"] {
+  animation: studio-menu-leave 170ms ease-in both !important;
+}
+.studio-shell [data-studio-overlay] { backdrop-filter: none; }
+.studio-shell [data-studio-overlay][data-state="open"] { animation-duration: 220ms; }
+.studio-shell [data-studio-overlay][data-state="closed"] { animation-duration: 170ms; }
+@keyframes studio-menu-arrive {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes studio-menu-leave {
+  from { opacity: 1; transform: translateX(0); }
+  to { opacity: 0; transform: translateX(8px); }
+}
+@media (max-width: 420px) {
+  .studio-shell :target { scroll-margin-top: 98px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .studio-shell [data-studio-sheet][data-state], .studio-shell [data-studio-overlay][data-state] { animation: none !important; }
+}

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { SectionLink as Link } from "@/components/studio-navigation";
 import { Menu } from "lucide-react";
 
 import { navItems, site } from "@/lib/site-content";
@@ -83,9 +83,9 @@ export function SiteHeader() {
                 <SheetTitle className="sr-only">Site navigation</SheetTitle>
                 <SheetDescription className="sr-only">Explore Adra Product Studio.</SheetDescription>
                 <div className="flex items-center justify-between">
-                  <Link href="#top" className="hover:opacity-90">
-                    <Logo />
-                  </Link>
+                  <SheetClose asChild>
+                    <Link href="#top" className="hover:opacity-90"><Logo /></Link>
+                  </SheetClose>
                 </div>
 
                 <div className="mt-8 flex flex-col gap-4">
