@@ -9,8 +9,7 @@ import {
   stealthNote
 } from "@/lib/site-content";
 
-import { OrbitDiagram } from "@/components/abstract/orbit-diagram";
-import { FlowStrip } from "@/components/abstract/flow-strip";
+import { ProductStory } from "@/components/product-story";
 import { MonoGrid } from "@/components/abstract/mono-grid";
 
 import { Button } from "@/components/ui/button";
@@ -97,16 +96,10 @@ export default function HomePage() {
                   <Link href="#clients">View clients</Link>
                 </Button>
               </div>
-
-              <div className="mt-12">
-                <FlowStrip />
-              </div>
             </div>
 
-            <div className="flex justify-center lg:justify-end">
-              <div className="rounded-[32px] border border-muted/50 bg-gradient-to-br from-background via-background to-muted/40 p-6 shadow-xl">
-                <OrbitDiagram centerLabel="Adra" />
-              </div>
+            <div className="flex min-w-0 justify-center lg:justify-end">
+              <ProductStory />
             </div>
           </div>
         </div>
