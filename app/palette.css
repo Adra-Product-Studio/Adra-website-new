@@ -1,0 +1,160 @@
+/* Graphite & Paper
+ * Chalk-white surfaces, graphite type, and quiet grey separation.
+ * A monochrome palette: hierarchy comes from value, not accent color.
+ * Existing studio token names remain aliases so layout and motion stay independent.
+ */
+.studio-shell {
+  --background: 0 0% 98%;
+  --foreground: 0 0% 15%;
+  --card: 0 0% 99%;
+  --card-foreground: 0 0% 15%;
+  --popover: 0 0% 99%;
+  --popover-foreground: 0 0% 15%;
+  --primary: 0 0% 17%;
+  --primary-foreground: 0 0% 99%;
+  --secondary: 0 0% 94%;
+  --secondary-foreground: 0 0% 20%;
+  --muted: 0 0% 95%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 0 0% 93%;
+  --accent-foreground: 0 0% 20%;
+  --border: 0 0% 86%;
+  --input: 0 0% 86%;
+  --ring: 0 0% 35%;
+  --studio-sage: 0 0% 37%;
+  --studio-amber: 0 0% 42%;
+  --studio-sand: 0 0% 94%;
+  --studio-wash: 0 0% 96.5%;
+}
+
+.dark .studio-shell {
+  --background: 0 0% 8%;
+  --foreground: 0 0% 93%;
+  --card: 0 0% 11.5%;
+  --card-foreground: 0 0% 93%;
+  --popover: 0 0% 11.5%;
+  --popover-foreground: 0 0% 93%;
+  --primary: 0 0% 89%;
+  --primary-foreground: 0 0% 12%;
+  --secondary: 0 0% 16%;
+  --secondary-foreground: 0 0% 93%;
+  --muted: 0 0% 16%;
+  --muted-foreground: 0 0% 68%;
+  --accent: 0 0% 19%;
+  --accent-foreground: 0 0% 93%;
+  --border: 0 0% 25%;
+  --input: 0 0% 25%;
+  --ring: 0 0% 75%;
+  --studio-sage: 0 0% 74%;
+  --studio-amber: 0 0% 68%;
+  --studio-sand: 0 0% 20%;
+  --studio-wash: 0 0% 10%;
+}
+
+.studio-home .section-invert {
+  --background: 0 0% 97%;
+  --foreground: 0 0% 15%;
+  --card: 0 0% 99%;
+  --card-foreground: 0 0% 15%;
+  --popover: 0 0% 99%;
+  --popover-foreground: 0 0% 15%;
+  --primary: 0 0% 17%;
+  --primary-foreground: 0 0% 99%;
+  --secondary: 0 0% 93%;
+  --secondary-foreground: 0 0% 20%;
+  --muted: 0 0% 94%;
+  --muted-foreground: 0 0% 40%;
+  --accent: 0 0% 93%;
+  --accent-foreground: 0 0% 20%;
+  --border: 0 0% 85%;
+  --input: 0 0% 85%;
+  --ring: 0 0% 35%;
+  --studio-sage: 0 0% 37%;
+  --studio-amber: 0 0% 42%;
+  --studio-sand: 0 0% 94%;
+  --studio-wash: 0 0% 96.5%;
+}
+
+.dark .studio-home .section-invert {
+  --background: 0 0% 10%;
+  --foreground: 0 0% 93%;
+  --card: 0 0% 13%;
+  --card-foreground: 0 0% 93%;
+  --popover: 0 0% 13%;
+  --popover-foreground: 0 0% 93%;
+  --primary: 0 0% 89%;
+  --primary-foreground: 0 0% 12%;
+  --secondary: 0 0% 17%;
+  --secondary-foreground: 0 0% 93%;
+  --muted: 0 0% 17%;
+  --muted-foreground: 0 0% 68%;
+  --accent: 0 0% 19%;
+  --accent-foreground: 0 0% 93%;
+  --border: 0 0% 25%;
+  --input: 0 0% 25%;
+  --ring: 0 0% 75%;
+  --studio-sage: 0 0% 74%;
+  --studio-amber: 0 0% 68%;
+  --studio-sand: 0 0% 20%;
+  --studio-wash: 0 0% 10%;
+}
+
+.studio-home .studio-principles {
+  --background: 0 0% 15%;
+  --foreground: 0 0% 95%;
+  --card: 0 0% 15%;
+  --card-foreground: 0 0% 95%;
+  --muted: 0 0% 22%;
+  --muted-foreground: 0 0% 75%;
+  --border: 0 0% 33%;
+  --ring: 0 0% 78%;
+  --studio-sage: 0 0% 77%;
+  --studio-amber: 0 0% 70%;
+}
+
+.dark .studio-home .studio-principles { --background: 0 0% 12%; --card: 0 0% 12%; }
+
+/* The story remains paper on a desk in both modes. Closely spaced greys
+ * distinguish the objects while graphite labels retain their contrast. */
+.studio-hero figure {
+  --story-paper: #fdfdfd;
+  --story-paper-shade: #f3f3f3;
+  --story-ink: #353535;
+  --story-muted: #686868;
+  --story-accent-paper: #e9e9e9;
+  --story-accent-rule: #c6c6c6;
+  --story-accent-ink: #626262;
+  --story-warm-paper: #dedede;
+  --story-warm-rule: #b4b4b4;
+  --story-folder-back: #a2a2a2;
+  --story-warm-ink: #5c5c5c;
+  --story-neutral-paper: #f0f0f0;
+  --story-neutral-rule: #d3d3d3;
+  --story-warm-mark: #999999;
+}
+
+.studio-hero figure figcaption > div > p > span { background: hsl(var(--studio-amber)); }
+.studio-hero figure [role="tab"][data-state="active"] > span:first-child > span { background: hsl(var(--studio-amber)); }
+
+/* Map the illustration's presentation attributes to the palette, without
+ * coupling this optional theme to component internals or animation classes. */
+.studio-hero figure svg[viewBox="0 0 480 312"] text { fill: var(--story-ink); }
+.studio-hero figure svg stop[stop-color="#fffefa"] { stop-color: var(--story-paper); }
+.studio-hero figure svg stop[stop-color="#f2efe7"] { stop-color: var(--story-paper-shade); }
+.studio-hero figure svg [fill="#fffefa"] { fill: var(--story-paper); }
+.studio-hero figure svg [fill="#282b28"] { fill: var(--story-ink); }
+.studio-hero figure svg :is([fill="#d8e1db"], [fill="#dce5de"], [fill="#e8eee8"]) { fill: var(--story-accent-paper); }
+.studio-hero figure svg :is([fill="#eecf9f"], [fill="#e3c498"], [fill="#f4e5cd"]) { fill: var(--story-warm-paper); }
+.studio-hero figure svg :is([fill="#d9b786"], [fill="#ddc39f"]) { fill: var(--story-warm-mark); }
+.studio-hero figure svg [fill="#bda27d"] { fill: var(--story-folder-back); }
+.studio-hero figure svg :is([fill="#e3ddd3"], [fill="#f0ebe2"], [fill="#f6f2e9"]) { fill: var(--story-neutral-paper); }
+.studio-hero figure svg :is([fill="#c4bbaa"], [fill="#d4cec2"], [fill="#dfd8cc"], [fill="#e1dcd2"]) { fill: var(--story-neutral-rule); }
+.studio-hero figure svg :is([stroke="#51655b"], [stroke="#537061"], [stroke="#617968"]) { stroke: var(--story-accent-ink); }
+.studio-hero figure svg :is([stroke="#bccbc1"], [stroke="#c4d0c5"], [stroke="#c5d2c6"]) { stroke: var(--story-accent-rule); }
+.studio-hero figure svg :is([stroke="#735b3c"], [stroke="#756959"], [stroke="#796649"], [stroke="#897459"], [stroke="#9b8668"], [stroke="#aa8757"]) { stroke: var(--story-warm-ink); }
+.studio-hero figure svg [stroke="#756d62"] { stroke: var(--story-muted); }
+.studio-hero figure svg :is([stroke="#b29a7a"], [stroke="#b79b75"], [stroke="#d1af7f"], [stroke="#d9b786"]) { stroke: var(--story-warm-rule); }
+.studio-hero figure svg :is([stroke="#d2ccbf"], [stroke="#d3cabc"], [stroke="#d5cdbd"], [stroke="#d8d3c9"], [stroke="#ded8cd"], [stroke="#e0d9cd"], [stroke="#e2ded5"]) { stroke: var(--story-neutral-rule); }
+.studio-hero figure svg [stroke="#f5f2eb"] { stroke: var(--story-paper); }
+.studio-hero figure svg [fill="#eee1ca"] { fill: var(--story-warm-paper); }
+.studio-hero figure svg [stroke="#c9ad85"] { stroke: var(--story-warm-rule); }
