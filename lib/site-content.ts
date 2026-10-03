@@ -35,80 +35,80 @@ export const stealthNote = "Other stealth mode startups";
 
 export const coreDisciplines = [
   {
-    title: "Product & UX",
+    title: "Product direction & design",
     items: [
-      "Discovery & scope shaping",
-      "UX/UI design",
-      "Design systems",
-      "Prototyping & usability testing"
+      "Discovery, priorities, and product roadmaps",
+      "UX/UI design and prototyping",
+      "Usability testing and design systems",
+      "Success measures and release planning"
     ]
   },
   {
-    title: "Full-stack engineering",
+    title: "Architecture & engineering",
     items: [
-      "Web & mobile applications",
-      "API design",
-      "Quality assurance",
-      "DevOps & release tooling"
+      "Technology choices and cost tradeoffs",
+      "Web, mobile, APIs, and integrations",
+      "Quality assurance, DevOps, and releases",
+      "Security, observability, and maintainability"
     ]
   },
   {
-    title: "Data & analytics",
+    title: "Data & AI",
     items: [
-      "Data engineering",
-      "Analytics instrumentation",
-      "Dashboards & reporting",
-      "Data science / ML where it fits"
+      "Data engineering and analytics",
+      "Dashboards and decision systems",
+      "AI agents, ML, and automation where useful",
+      "Evaluation, controls, and operational fit"
     ]
   },
   {
-    title: "Ops & delivery",
+    title: "Teams & delivery",
     items: [
-      "Product ops",
-      "Customer success enablement",
-      "Playbooks & documentation",
-      "Clean handoff to internal teams"
+      "Staffing, budgets, and delivery planning",
+      "Stakeholder alignment and progress reporting",
+      "Product ops and customer success enablement",
+      "Change management, documentation, and handoff"
     ]
   }
 ] as const;
 
 export const enterpriseCapabilities = [
-  "Algorithmic insights & decision systems",
-  "Conversational AI agents",
-  "Application modernization",
-  "Custom application development",
-  "Managed services (hosting, monitoring, updates)"
+  "New products and internal applications",
+  "Data platforms and decision systems",
+  "AI agents and workflow automation",
+  "Application modernization and integration",
+  "Managed hosting, monitoring, and updates"
 ] as const;
 
 export const engagementModels = [
   {
-    title: "Team extension",
+    title: "Product & delivery partner",
     description:
-      "Add senior product, design, and engineering capacity without changing your org structure.",
+      "Work with leadership from problem framing through roadmap, team setup, and delivery.",
     bullets: [
-      "Works inside your tooling and cadence",
-      "Fills specific skill gaps",
-      "Scales up/down as needed"
+      "Product and technical decisions together",
+      "Budget, milestones, and team shape",
+      "Execution with regular progress reviews"
     ]
   },
   {
-    title: "End-to-end delivery",
+    title: "Embedded team",
     description:
-      "We own delivery for a defined product or initiative—from problem framing to production.",
+      "Add product, design, engineering, or data capability to an existing team or a defined initiative.",
     bullets: [
-      "Clear scope, milestones, and demos",
-      "Architecture + UX decisions captured",
-      "Documentation and handoff included"
+      "Clear responsibilities and shared cadence",
+      "Works within your tools and constraints",
+      "Scales with the work and internal hiring"
     ]
   },
   {
-    title: "Managed capability",
+    title: "Ongoing product care",
     description:
-      "Ongoing iteration and maintenance when you want a small, reliable team on the line.",
+      "Keep improving and operating the product after launch, with a team that knows its context.",
     bullets: [
-      "Monitoring and operational hygiene",
-      "Incremental improvements",
-      "Security and dependency updates"
+      "Iteration, hosting, and monitoring",
+      "Security and dependency updates",
+      "Documentation and planned handoff"
     ]
   }
 ] as const;

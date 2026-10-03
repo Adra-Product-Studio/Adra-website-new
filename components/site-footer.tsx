@@ -10,8 +10,8 @@ export function SiteFooter() {
           <div className="md:col-span-4">
             <div className="text-sm font-semibold">{site.name}</div>
             <p className="mt-2 text-sm text-muted-foreground">
-              Product, design, and engineering support for startups and
-              enterprise teams.
+              Product direction, technical judgment, and delivery for
+              founders and leadership teams.
             </p>
           </div>
 
