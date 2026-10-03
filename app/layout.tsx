@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
+import "./studio.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteFooter } from "@/components/site-footer";
@@ -37,7 +38,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={plusJakartaSans.className}>
+      <body className={`${plusJakartaSans.className} studio-shell`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -45,8 +46,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <div className="min-h-screen bg-background">
+            <a href="#main-content" className="studio-skip">Skip to content</a>
             <SiteHeader />
-            <main className="relative">{children}</main>
+            <main id="main-content" className="relative">{children}</main>
             <SiteFooter />
           </div>
         </ThemeProvider>
