@@ -15,12 +15,12 @@ export const metadata: Metadata = {
     template: "%s · Adra Product Studio"
   },
   description:
-    "A product, design, and engineering team you can plug in—supporting startups and enterprises from fuzzy beginnings to shipped software.",
+    "A product and technology partner for founders and leadership teams. Turn business goals into a roadmap, the right team, and working software.",
   metadataBase: new URL("https://adraproductstudio.com"),
   openGraph: {
     title: "Adra Product Studio",
     description:
-      "Product, UX, full-stack, and data—delivered with clear ownership and clean handoff.",
+      "Product direction, technical judgment, and delivery. Roadmaps, architecture, teams, and execution shaped around your business goals.",
     url: "https://adraproductstudio.com",
     siteName: "Adra Product Studio",
     locale: "en_US",

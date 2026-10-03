@@ -69,19 +69,18 @@ export default function HomePage() {
                 <Badge>Startups</Badge>
                 <Badge>Enterprises</Badge>
                 <Badge variant="secondary">
-                  Product · UX · Engineering · Data
+                  Product · Technology · Delivery
                 </Badge>
               </div>
 
               <h1 className="mt-8 text-3xl font-semibold tracking-tight text-foreground sm:text-5xl">
-                A product & engineering team you can plug in.
+                Clarity on what to build. A team to deliver.
               </h1>
 
               <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Adra Product Studio helps teams move from early ambiguity to
-                shipped software. We bring product thinking, UX, full-stack
-                delivery, data, and ops—then hand off cleanly when you want to
-                build internally.
+                We partner with founders and leadership teams to turn business
+                goals into a roadmap, a team, and working software. We lead
+                delivery and keep decisions, costs, and progress visible.
               </p>
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -93,7 +92,7 @@ export default function HomePage() {
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
-                  <Link href="#clients">View clients</Link>
+                  <Link href="#engagement">How we partner</Link>
                 </Button>
               </div>
             </div>
@@ -114,72 +113,74 @@ export default function HomePage() {
         <div className="container py-16">
           <SectionHeading
             eyebrow="How we work"
-            title="High pace, clear ownership, lightweight structure."
-            description="We optimize for shipping reliable product increments with minimal coordination overhead."
+            title="Direction, decisions, and delivery—in one team."
+            description="Align the roadmap, budget, team, and architecture around what the business needs next."
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>Own outcomes</CardTitle>
+                <CardTitle>Start with the goal</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  We take responsibility for delivery and quality, not just
-                  tasks.
+                  Agree on the problem and success measures before committing
+                  to a build.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Clear scope and tradeoffs</li>
-                  <li>• Demo-driven iteration</li>
-                  <li>• Testing and release discipline</li>
+                  <li>• Long-term direction, near-term priorities</li>
+                  <li>• Roadmap and milestones</li>
+                  <li>• Scope and budget tradeoffs</li>
                 </ul>
               </CardContent>
             </Card>
 
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>Move with focus</CardTitle>
+                <CardTitle>Choose for context</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Small teams with senior attention reduce handoffs and rework.
+                  Fit the architecture to the work, budget, and team running it.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Tight feedback loops</li>
-                  <li>• Practical scoping</li>
-                  <li>• Fewer moving parts</li>
+                  <li>• Build, buy, or integrate</li>
+                  <li>• Running cost and maintainability</li>
+                  <li>• Security and compliance needs</li>
                 </ul>
               </CardContent>
             </Card>
 
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>Create structure</CardTitle>
+                <CardTitle>Set the right pace</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Just enough process to keep shipping predictable.
+                  Match the team and process to risk. Move fast where change
+                  is cheap.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Roadmap and backlog hygiene</li>
-                  <li>• Decision logs</li>
-                  <li>• Operational checklists</li>
+                  <li>• Roles and decision owners</li>
+                  <li>• Review and release controls</li>
+                  <li>• Team practices and AI adoption</li>
                 </ul>
               </CardContent>
             </Card>
 
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>Enable handoff</CardTitle>
+                <CardTitle>Keep progress visible</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  We build so your team can own, maintain, and extend.
+                  Own delivery commitments. Report spend and risks. Adapt as
+                  evidence changes.
                 </p>
                 <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
-                  <li>• Docs and runbooks</li>
-                  <li>• Knowledge transfer</li>
-                  <li>• Gradual transition</li>
+                  <li>• Demos and agreed measures</li>
+                  <li>• Stakeholder decisions</li>
+                  <li>• Adoption and ownership</li>
                 </ul>
               </CardContent>
             </Card>
@@ -195,65 +196,53 @@ export default function HomePage() {
         <div className="container py-16">
           <SectionHeading
             eyebrow="Startups"
-            title="Tech co‑founding leverage—on demand."
-            description="When the problem is still fuzzy and speed matters, you need a team that can own delivery. We work like an early technical founding team: shaping scope, building the product, and putting lightweight structure in place so shipping stays predictable."
+            title="Make sense of the idea. Build what matters first."
+            description="Work through ambiguity together. Decide what to test, build, and defer, then turn that direction into a roadmap and working product."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>What we take on</CardTitle>
+                <CardTitle>From open questions to a plan</CardTitle>
                 <CardDescription>
-                  Cross-functional execution so you don’t have to assemble a
-                  full org up front.
+                  Test the assumptions and set a practical first phase.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>
-                    • Product shaping: scope, tradeoffs, and release planning
-                  </li>
-                  <li>• UX/UI and design systems (where it reduces rework)</li>
-                  <li>• Full-stack engineering, QA, and deployment</li>
-                  <li>
-                    • Data engineering, analytics instrumentation, and
-                    dashboards
-                  </li>
-                  <li>
-                    • Data science / ML when it directly supports the product
-                  </li>
-                  <li>
-                    • Product ops and customer success enablement as needed
-                  </li>
+                  <li>• Customer problem, assumptions, and validation plan</li>
+                  <li>• Product vision, priorities, and first release</li>
+                  <li>• Budget, milestones, and explicit tradeoffs</li>
+                  <li>• Architecture that fits today and leaves room to grow</li>
+                  <li>• Roles to staff now and capabilities to add later</li>
                 </ul>
               </CardContent>
             </Card>
 
             <Card className={cardClassName}>
               <CardHeader>
-                <CardTitle>What you keep in focus</CardTitle>
+                <CardTitle>From plan to use</CardTitle>
                 <CardDescription>
-                  Founders stay on vision and validation while delivery keeps
-                  moving.
+                  Stay close to the vision and the customer while we lead
+                  day-to-day delivery with you.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Vision and strategy</li>
-                  <li>• Customer discovery and go-to-market</li>
-                  <li>• Fundraising and capital strategy</li>
-                  <li>• Partnerships and business development</li>
-                  <li>• Hiring plans and culture (as you scale)</li>
+                  <li>• UX, engineering, data, and quality in one team</li>
+                  <li>• Short releases and real user feedback</li>
+                  <li>• Clear progress, costs, and decisions to make</li>
+                  <li>• Launch readiness and customer success enablement</li>
+                  <li>• Hiring, onboarding, and ownership as you grow</li>
                 </ul>
 
                 <div className="mt-6 rounded-xl border border-muted/50 bg-muted/30 p-4">
                   <div className="text-sm font-medium">
-                    Handoff is part of the plan
+                    Build your ability to own it
                   </div>
                   <p className="mt-2 text-sm text-muted-foreground">
-                    As your internal team forms, we document decisions, improve
-                    maintainability, and transfer ownership without slowing
-                    delivery.
+                    Decisions, code, and context stay accessible. We help your
+                    team take ownership or keep working alongside you.
                   </p>
                 </div>
               </CardContent>
@@ -270,27 +259,26 @@ export default function HomePage() {
         <div className="container scroll-mt-24 py-16">
           <SectionHeading
             eyebrow="Enterprises"
-            title="A skunk‑works team for new products and new paths."
-            description="For enterprise teams exploring new markets or initiatives, we operate as a small, senior product studio that can move with startup pace—while making architecture and delivery choices that won’t block scaling, security, or integration later."
+            title="From leadership priority to daily use."
+            description="Translate a leadership priority into an executable plan. Align stakeholders, work with existing systems, and set a pace that fits the operational risk."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
             <Card className={`${cardClassName} lg:col-span-2`}>
               <CardHeader>
-                <CardTitle>How we fit</CardTitle>
+                <CardTitle>The plan includes the organization</CardTitle>
                 <CardDescription>
-                  Lean delivery, clear decisions, and practical engineering that
-                  respects enterprise constraints.
+                  Technology, people, and adoption need to move together.
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <ul className="grid gap-2 text-sm text-muted-foreground sm:grid-cols-2">
-                  <li>• Prototype → pilot → production path</li>
-                  <li>• Integration with existing systems and data</li>
-                  <li>• Security and operational hygiene from the start</li>
-                  <li>• Measurable milestones and demo-driven cadence</li>
-                  <li>• Documentation for governance and handoff</li>
-                  <li>• Enablement for internal teams to own</li>
+                  <li>• Roadmap, budget, dependencies, and decision owners</li>
+                  <li>• Architecture and integration with existing systems</li>
+                  <li>• Security, compliance, and review requirements</li>
+                  <li>• Staffing and coordination across internal teams</li>
+                  <li>• Pilot, rollout, and team training</li>
+                  <li>• Progress, risks, and decisions reported to leadership</li>
                 </ul>
               </CardContent>
             </Card>
@@ -299,7 +287,7 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>Common initiatives</CardTitle>
                 <CardDescription>
-                  Areas we often support in enterprise settings.
+                  New products, better operations, and systems ready for change.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -322,8 +310,8 @@ export default function HomePage() {
         <div className="container py-16">
           <SectionHeading
             eyebrow="Capabilities"
-            title="Depth where it matters, flexibility everywhere else."
-            description="We assemble the smallest team needed to ship well. Roles and responsibilities can expand or contract as your product matures."
+            title="Product, technology, and operations."
+            description="Bring the skills the work needs, with clear ownership as the team evolves."
           />
 
           <div className="mt-10 grid gap-6 md:grid-cols-2">
@@ -345,13 +333,12 @@ export default function HomePage() {
 
           <div className="mt-10 rounded-2xl border border-muted/50 bg-gradient-to-br from-muted/40 via-background to-background p-6 shadow-sm">
             <div className="text-sm font-medium">
-              A note on technology choices
+              AI changes the work. Judgment still matters.
             </div>
             <p className="mt-2 max-w-3xl text-sm leading-relaxed text-muted-foreground">
-              We bias toward maintainable, well-understood stacks and clear
-              interfaces. When you need to scale, we’d rather rely on solid
-              foundations (testing, observability, data contracts, and
-              documentation) than last-minute rewrites.
+              Adopt AI and coding agents with clear architecture, review,
+              tests, and ownership. Faster code is one part of delivery; teams
+              and working practices need to evolve too.
             </p>
           </div>
         </div>
@@ -365,8 +352,8 @@ export default function HomePage() {
         <div className="container scroll-mt-24 py-16">
           <SectionHeading
             eyebrow="Engagement"
-            title="Choose the level of ownership you need."
-            description="We can join as an embedded extension, run an initiative end-to-end, or stay on for ongoing iteration."
+            title="Work with us at the level you need."
+            description="Start with an open question, a defined initiative, or an existing team. Agree on what we own."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-3">
@@ -398,7 +385,6 @@ export default function HomePage() {
           <SectionHeading
             eyebrow="Clients"
             title="Teams we’ve partnered with."
-            description="A small sample of companies we’ve worked with."
           />
 
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -450,37 +436,36 @@ export default function HomePage() {
               <AccordionItem value="item-1">
                 <AccordionTrigger>How do we start?</AccordionTrigger>
                 <AccordionContent>
-                  We begin by aligning on the problem, constraints, and what
-                  “good” looks like. From there, we propose an initial scope and
-                  a delivery cadence with regular demos.
+                  We start with the business goal and constraints, then propose a
+                  first phase with priorities, budget, team shape, and decision
+                  points.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
                 <AccordionTrigger>
-                  Do you work with existing teams?
+                  Can you work with our team and help it grow?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Yes. We can embed with your engineers and designers, or run a
-                  defined track in parallel. The goal is clear ownership and
-                  minimal coordination overhead.
+                  Yes. We embed or lead an initiative alongside your team. We can
+                  also shape roles, assess technical hires, and onboard people.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-3">
                 <AccordionTrigger>How do you handle handoff?</AccordionTrigger>
                 <AccordionContent>
-                  We treat handoff as an outcome, not a last step: decisions are
-                  documented, code is reviewed for maintainability, and we can
-                  support onboarding so your team can own confidently.
+                  We document decisions, keep code maintainable, and build runbooks
+                  as we go. Walkthroughs and a planned transition give your team
+                  the context to operate and extend the product.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-4">
                 <AccordionTrigger>
-                  Can you help with scaling and hiring?
+                  How do you stay accountable?
                 </AccordionTrigger>
                 <AccordionContent>
-                  We can help define roles, participate in technical interviews,
-                  and build onboarding materials. When your internal team is
-                  ready, we step back or stay on in a smaller support role.
+                  We agree on delivery commitments and success measures, then
+                  review demos, spend, risks, and decisions with you. Customer
+                  feedback and adoption data guide what changes next.
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-5">
@@ -488,9 +473,9 @@ export default function HomePage() {
                   What does engagement look like commercially?
                 </AccordionTrigger>
                 <AccordionContent>
-                  Typically either a monthly retainer for a small team, or a
-                  scoped project with milestones. We keep the structure
-                  lightweight and the expectations explicit.
+                  A monthly retainer or a scoped initiative with milestones.
+                  We agree on responsibilities, budget, and review points up
+                  front, and make changes to scope or staffing explicit.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -506,8 +491,8 @@ export default function HomePage() {
         <div className="container scroll-mt-24 py-16">
           <SectionHeading
             eyebrow="Contact"
-            title="Let’s talk about what you’re building."
-            description="If you’re exploring a new product or need extra delivery bandwidth, email us with a short note on context and timing."
+            title="What are you trying to achieve?"
+            description="Bring the goal, the constraints, and the questions you haven’t resolved. You don’t need a finished brief."
           />
 
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
@@ -515,8 +500,7 @@ export default function HomePage() {
               <CardHeader>
                 <CardTitle>Email</CardTitle>
                 <CardDescription>
-                  The simplest way to start is a message with your goal and
-                  constraints.
+                  A short note is enough to start.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -531,9 +515,9 @@ export default function HomePage() {
                 <div className="mt-6 rounded-xl border border-muted/50 bg-muted/20 p-4">
                   <div className="text-sm font-medium">What to include</div>
                   <ul className="mt-2 space-y-2 text-sm text-muted-foreground">
-                    <li>• A one-paragraph product summary</li>
-                    <li>• Current stage (idea, prototype, live, scaling)</li>
-                    <li>• Your timeline and constraints</li>
+                    <li>• The goal and where things stand</li>
+                    <li>• Your team, budget, and timing</li>
+                    <li>• The decisions or delivery you need help with</li>
                   </ul>
                 </div>
               </CardContent>
@@ -570,9 +554,8 @@ export default function HomePage() {
                 <div className="mt-6 rounded-xl border border-muted/50 bg-muted/20 p-4">
                   <div className="text-sm font-medium">Working style</div>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-                    Small team. Clear ownership. Short cycles. Decisions written
-                    down. We optimize for shipping a reliable product—not
-                    creating process.
+                    Clear owners. Visible decisions. Regular reviews. Enough
+                    structure for the risk and complexity of the work.
                   </p>
                 </div>
               </CardContent>

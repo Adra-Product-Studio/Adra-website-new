@@ -8,10 +8,10 @@ import styles from "./product-story.module.css";
 
 const STAGE_DURATION = 5600;
 const stages = [
-  { id: "align", label: "Align", title: "A question becomes a shared direction.", description: "The audience, priorities, and success measures—in one clear brief." },
-  { id: "shape", label: "Shape", title: "The direction becomes something you can try.", description: "Flows, prototypes, and a build plan shaped by feedback." },
-  { id: "ship", label: "Ship", title: "The plan becomes a working product.", description: "Build in small increments. Review together. Test and release." },
-  { id: "handoff", label: "Handoff", title: "The product becomes yours to build on.", description: "Code, documentation, and team walkthroughs for a confident handoff." }
+  { id: "align", label: "Align", title: "A question becomes a shared direction.", description: "Goals, users, and success measures—in one clear brief." },
+  { id: "shape", label: "Shape", title: "The direction becomes something you can try.", description: "Priorities, prototypes, and a roadmap shaped by feedback." },
+  { id: "ship", label: "Ship", title: "The plan becomes a working product.", description: "Build in short cycles. Review progress, spend, and risks together." },
+  { id: "handoff", label: "Handoff", title: "The product becomes yours to build on.", description: "Code, documentation, and team walkthroughs for lasting ownership." }
 ] as const;
 
 function StoryArtwork({ stage }: { stage: number }) {
@@ -261,7 +261,7 @@ export function ProductStory() {
   };
 
   return (
-    <figure ref={figureRef} className={styles.story} aria-label="How Adra turns an idea into a product">
+    <figure ref={figureRef} className={styles.story} aria-label="How Adra turns business goals into a product">
       <figcaption className={styles.header}>
         <div className={styles.topline}>
           <p className={styles.eyebrow}><span aria-hidden="true" />Adra, in the making</p>
