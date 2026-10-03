@@ -79,16 +79,16 @@ export function SiteHeader() {
                   <Menu className="h-4 w-4" />
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right" className="w-[320px] max-w-full">
+              <SheetContent side="right" className="studio-menu w-[320px] max-w-full">
                 <SheetTitle className="sr-only">Site navigation</SheetTitle>
                 <SheetDescription className="sr-only">Explore Adra Product Studio.</SheetDescription>
                 <div className="flex items-center justify-between">
-                  <Link href="#top" className="hover:opacity-90">
-                    <Logo />
-                  </Link>
+                  <SheetClose asChild>
+                    <Link href="#top" className="hover:opacity-90"><Logo /></Link>
+                  </SheetClose>
                 </div>
 
-                <div className="mt-8 flex flex-col gap-4">
+                <nav aria-label="Mobile navigation" className="mt-8 flex flex-col gap-4">
                   {navItems.map((item) => (
                     <SheetClose asChild key={item.href}>
                       <a href={item.href} className="py-2 text-sm text-muted-foreground hover:text-foreground">
@@ -96,7 +96,7 @@ export function SiteHeader() {
                       </a>
                     </SheetClose>
                   ))}
-                </div>
+                </nav>
 
                 <div className="mt-8">
                   <Button asChild className="w-full">

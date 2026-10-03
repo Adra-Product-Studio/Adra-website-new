@@ -15,10 +15,10 @@
 .topline { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
 .eyebrow { display: flex; align-items: center; gap: 8px; color: hsl(var(--muted-foreground)); font-size: 9px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
 .eyebrow > span { width: 6px; height: 6px; border-radius: 2px; background: #ba9361; transform: rotate(-12deg); }
-.playback { display: inline-flex; min-width: 72px; min-height: 44px; align-items: center; justify-content: flex-end; gap: 6px; border-radius: 8px; color: hsl(var(--muted-foreground)); font-size: 10px; }
+.playback { display: inline-flex; min-width: 72px; min-height: 44px; align-items: center; justify-content: center; gap: 6px; margin-right: -8px; padding-inline: 8px; border-radius: 6px; color: hsl(var(--muted-foreground)); font-size: 10px; transition: color 180ms ease, background-color 180ms ease; }
 .playback:hover { color: hsl(var(--foreground)); }
 .playback svg { width: 12px; height: 12px; }
-.header h2 { margin-top: 10px; font-size: clamp(24px, 2.5vw, 30px); font-weight: 600; letter-spacing: -.045em; line-height: 1.2; }
+.header h2 { margin-top: 10px; font-size: clamp(24px, 2.5vw, 30px); font-weight: 600; letter-spacing: -.03em; line-height: 1.2; }
 .intro { margin-top: 9px; color: hsl(var(--muted-foreground)); font-size: 12px; line-height: 1.6; }
 .panel { outline-offset: -3px; }
 .canvas { position: relative; margin: 16px 10px 0; aspect-ratio: 480 / 312; background-image: radial-gradient(hsl(var(--foreground) / .08) .7px, transparent .7px); background-size: 16px 16px; }
@@ -35,11 +35,11 @@
 .folderTitle { fill: #5c4730; font-size: 20px; font-weight: 500; letter-spacing: -.7px; }
 .caption { min-height: 148px; padding: 16px 28px 20px; }
 .chapter { color: hsl(var(--muted-foreground)); font-size: 9px; font-weight: 600; letter-spacing: .13em; text-transform: uppercase; }
-.caption h3 { max-width: 31ch; margin-top: 8px; font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.035em; text-wrap: balance; }
+.caption h3 { max-width: 31ch; margin-top: 8px; font-size: 19px; font-weight: 500; line-height: 1.35; letter-spacing: -.02em; text-wrap: balance; }
 .description { max-width: 43ch; margin-top: 8px; color: hsl(var(--muted-foreground)); font-size: 12px; line-height: 1.65; }
 .stages { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 0 28px; }
-.stage { display: flex; min-width: 0; min-height: 58px; flex-direction: column; align-items: stretch; gap: 10px; border-radius: 4px; color: hsl(var(--muted-foreground)); text-align: left; }
-.track { display: block; height: 2px; overflow: hidden; background: hsl(var(--border)); }
+.stage { display: flex; min-width: 0; min-height: 58px; flex-direction: column; align-items: stretch; gap: 10px; border-radius: 4px; color: hsl(var(--muted-foreground)); text-align: left; transition: color 180ms ease; }
+.track { display: block; height: 2px; overflow: hidden; background: hsl(var(--border)); transition: background-color 180ms ease; }
 .track > span { display: block; width: 100%; height: 100%; transform-origin: left; background: hsl(var(--muted-foreground) / .55); }
 .stage[data-state="active"] .track { background: hsl(var(--muted-foreground) / .25); }
 .stage[data-state="active"] .track > span { background: #bd9562; }
@@ -49,6 +49,13 @@
 .stage:hover .stageLabel { color: hsl(var(--foreground)); }
 .stage:focus-visible, .playback:focus-visible, .panel:focus-visible { outline: 2px solid hsl(var(--ring)); outline-offset: 3px; }
 .panel:focus-visible { outline-offset: -3px; }
+.story[data-artwork-paused="true"] .artwork * { animation-play-state: paused; }
+.caption { animation: caption-in 280ms cubic-bezier(.22,.7,.2,1) both; }
+@keyframes caption-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (hover: hover) and (pointer: fine) {
+  .playback:hover { background: hsl(var(--muted)); }
+  .stage:hover .track { background: hsl(var(--muted-foreground) / .45); }
+}
 .footer { padding: 13px 26px; border-top: 1px solid hsl(var(--border)); color: hsl(var(--muted-foreground)); font-size: 10px; line-height: 1.5; text-align: center; }
 
 /* Each stage assembles a tangible artifact. All sequences settle within two seconds. */
@@ -101,5 +108,5 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .artwork * { animation: none !important; transition: none !important; }
+  .artwork *, .caption { animation: none !important; transition: none !important; }
 }
